@@ -1,0 +1,19 @@
+{
+  "collision_id_max_exclusive": 11,
+  "records": [
+    {"id": 1, "name": "grass_top", "solid": true, "friction": "T2", "box": "1x1"},
+    {"id": 2, "name": "cloud", "solid": true, "friction": "T2", "box": "1x1"},
+    {"id": 3, "name": "dirt", "solid": true, "friction": "T2", "box": "1x1"},
+    {"id": 4, "name": "snow_fill", "solid": true, "friction": "T2", "box": "1x1"},
+    {"id": 5, "name": "snow_top", "solid": true, "friction": "T2", "box": "1x1"},
+    {"id": 6, "name": "ice_top", "solid": true, "friction": "T1", "box": "1x1"},
+    {"id": 7, "name": "pipe_shaft", "solid": true, "friction": "T3", "box": "1x1", "draw_width_tiles": 2},
+    {"id": 8, "name": "pipe_mouth_down", "solid": true, "friction": "T3", "box": "2x2"},
+    {"id": 9, "name": "unused_pipe", "solid": true, "friction": "T3", "box": "1x1"},
+    {"id": 10, "name": "pipe_mouth_up", "solid": true, "friction": "T3", "box": "2x2"},
+    {"id": 11, "name": "grass_tuft", "solid": false, "friction": null, "box": "scenery"},
+    {"id": 12, "name": "goal_sign", "solid": false, "friction": null, "box": "scenery"},
+    {"id": 13, "name": "water", "solid": false, "friction": null, "box": "scenery"},
+    {"id": 14, "name": "tree", "solid": false, "friction": null, "box": "scenery"}
+  ]
+}

@@ -1,0 +1,9 @@
+# Same opening, then jump onto the first cloud (tiles 10–13 at y=6)
+# where the flower sits at pixel (448, 160).
+80 .
+120 D
+1  DW
+50 D
+1  DW
+40 D
+20 .
