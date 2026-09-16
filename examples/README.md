@@ -43,7 +43,7 @@ python3 examples/levels/export_worlds.py -o /tmp/maoliao_worlds.json
 python3 examples/levels/svg_map.py --world 1 -o /tmp/world1.svg
 ```
 
-Worlds 1 and 2 draw only the first 30 map records, the same cap as `MAP_NUMBER` in `scene.h`. Pass `--no-cap` to see the two extra water tiles that `createMap` never copies.
+Worlds 1 and 2 draw only the first 30 map records, the same cap as `MAP_NUMBER` in `scene.h`. Pass `--no-cap` to see what `createMap` never copies: two water tiles on world 1, and the goal sign plus trees on world 2.
 
 ## Input and save
 

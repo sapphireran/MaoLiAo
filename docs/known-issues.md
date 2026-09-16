@@ -18,7 +18,10 @@ Several `while (i <= sizeof(arr)/sizeof(arr[0]))` loops run one past the last in
 - `Role::createEnemy` (all three worlds)
 - `Scene::createMap` world 3 (`i <= sizeof(m)/sizeof(m[0])`)
 
-World 1–2 `createMap` uses `i < MAP_NUMBER` (30) instead. World 1 still **authors 32 map records**, so the last two water tiles (id 13 at x 71 and 75) never copy into `map[]`.
+World 1–2 `createMap` uses `i < MAP_NUMBER` (30) instead. That silently drops trailing records:
+
+- World 1 authors **32** tiles; water at x 71 and 75 never loads.
+- World 2 authors **36** tiles; the copy stops after the cloud staircase, so the **goal sign** at `(111, 1)`, the grass tuft at `(42, 8)`, and all four trees never load. The stage is still clearable because `isEnding` is a distance check (104 tiles), not a sprite.
 
 World 2’s comment `//???存在问题` sits on the copy loop.
 

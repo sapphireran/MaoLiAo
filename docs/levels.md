@@ -74,7 +74,7 @@ Water scenery (id 13) marks the pits at x 15, 64, 71, 75.
 
 ## World 2 — sky islands
 
-Length trigger: 104 tiles (3328 px). Goal sign at `(111, 1)`.
+Length trigger: 104 tiles (3328 px). Goal sign authored at `(111, 1)` — but it sits past the `MAP_NUMBER` (30) copy cap, so V2.0 never draws it. Trees and the x=42 grass tuft are in the same dropped tail. Clear the stage by walking far enough for `isEnding`, not by touching the sign.
 
 The floor is broken snow (id 5) with underground id 4. Cloud stepping stones climb toward a 12-tile cloud runway at `(102, 3)`. A staircase of 1-tile clouds at x 67–70 and a matching pillar at x 75 form a gap you can fall through.
 

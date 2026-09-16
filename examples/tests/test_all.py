@@ -174,6 +174,8 @@ def test_worlds() -> None:
 
     check(len(WORLD2_TILES) == 36, f"world2 authored {len(WORLD2_TILES)}")
     check(loaded_tile_count(2) == 30, "world2 also hits the 30-tile cap")
+    check((111, 1, 12, 1, 1) in WORLD2_TILES[30:], "world2 goal is in the dropped tail")
+    check((111, 1, 12, 1, 1) not in WORLD2_TILES[:30], "world2 goal is not among the 30 loaded tiles")
     check(len(coins_for(2)) == 11, "world2 coins")
     check(len(enemies_for(2)) == 6, "world2 enemies")
     check(WORLD_SPECS[2].goal == (111, 1), "world2 goal")
