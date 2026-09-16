@@ -1,0 +1,63 @@
+{
+  "id": "example-world-4-canyon",
+  "world": 4,
+  "name": "Canyon",
+  "theme": "canyon",
+  "ending_tiles": 88,
+  "friction_profile": "overworld",
+  "notes": "Paste candidate, not in the .exe. A broken grassland with a 6-tile pit, cloud stepping stones that sit inside the 3.16-tile jump, one slick landing, and a short pipe gate. 24 tiles / 12 coins / 1 food / 6 enemies — under every cap.",
+  "tiles": [
+    {"x": 0, "y": 9, "id": 1, "x_amount": 16, "y_amount": 1, "kind": "west-rim"},
+    {"x": 0, "y": 10, "id": 3, "x_amount": 16, "y_amount": 2, "kind": "west-fill"},
+    {"x": 22, "y": 9, "id": 1, "x_amount": 10, "y_amount": 1, "kind": "mid-mesa"},
+    {"x": 22, "y": 10, "id": 3, "x_amount": 10, "y_amount": 2, "kind": "mid-fill"},
+    {"x": 40, "y": 9, "id": 5, "x_amount": 8, "y_amount": 1, "kind": "east-approach"},
+    {"x": 40, "y": 10, "id": 4, "x_amount": 8, "y_amount": 2, "kind": "east-fill"},
+    {"x": 48, "y": 9, "id": 6, "x_amount": 3, "y_amount": 1, "kind": "slick-lip"},
+    {"x": 48, "y": 10, "id": 3, "x_amount": 3, "y_amount": 2, "kind": "slick-fill"},
+    {"x": 56, "y": 9, "id": 1, "x_amount": 40, "y_amount": 1, "kind": "finish-runway"},
+    {"x": 56, "y": 10, "id": 3, "x_amount": 40, "y_amount": 2, "kind": "finish-fill"},
+
+    {"x": 16, "y": 7, "id": 2, "x_amount": 2, "y_amount": 1, "kind": "gap-cloud-1"},
+    {"x": 19, "y": 5, "id": 2, "x_amount": 2, "y_amount": 1, "kind": "gap-cloud-2"},
+    {"x": 33, "y": 6, "id": 2, "x_amount": 3, "y_amount": 1, "kind": "mesa-cloud"},
+    {"x": 52, "y": 6, "id": 2, "x_amount": 2, "y_amount": 1, "kind": "slick-recovery"},
+
+    {"x": 28, "y": 7, "id": 10, "x_amount": 1, "y_amount": 1, "kind": "pipe-gate"},
+    {"x": 62, "y": 7, "id": 10, "x_amount": 1, "y_amount": 1, "kind": "pipe-gate"},
+
+    {"x": 8, "y": 7, "id": 11, "x_amount": 1, "y_amount": 1, "kind": "bg-grass"},
+    {"x": 44, "y": 7, "id": 11, "x_amount": 1, "y_amount": 1, "kind": "bg-grass"},
+    {"x": 70, "y": 7, "id": 11, "x_amount": 1, "y_amount": 1, "kind": "bg-grass"},
+    {"x": 18, "y": 10, "id": 13, "x_amount": 1, "y_amount": 1, "kind": "water-in-gap"},
+    {"x": 36, "y": 10, "id": 13, "x_amount": 1, "y_amount": 1, "kind": "water-in-gap"},
+    {"x": 6, "y": 7, "id": 14, "x_amount": 1, "y_amount": 1, "kind": "tree"},
+    {"x": 58, "y": 7, "id": 14, "x_amount": 1, "y_amount": 1, "kind": "tree"},
+    {"x": 92, "y": 7, "id": 12, "x_amount": 1, "y_amount": 1, "kind": "goal-sign"}
+  ],
+  "coins": [
+    {"x": 12, "y": 8},
+    {"x": 13, "y": 8},
+    {"x": 16, "y": 6},
+    {"x": 17, "y": 6},
+    {"x": 19, "y": 4},
+    {"x": 20, "y": 4},
+    {"x": 33, "y": 5},
+    {"x": 34, "y": 5},
+    {"x": 35, "y": 5},
+    {"x": 49, "y": 8},
+    {"x": 52, "y": 5},
+    {"x": 63, "y": 8}
+  ],
+  "food": [
+    {"x": 26, "y": 8, "unit": "tiles", "note": "on the mid mesa, one tile left of the first pipe"}
+  ],
+  "enemies": [
+    {"x": 8, "y": 8, "turn": 1},
+    {"x": 24, "y": 8, "turn": -1},
+    {"x": 30, "y": 8, "turn": 1},
+    {"x": 42, "y": 8, "turn": -1},
+    {"x": 60, "y": 8, "turn": 1},
+    {"x": 74, "y": 8, "turn": -1}
+  ]
+}

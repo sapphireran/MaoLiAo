@@ -1,0 +1,52 @@
+{
+  "id": "example-tutorial-parkour",
+  "world": 5,
+  "name": "Jump budget tutorial",
+  "theme": "tutorial",
+  "ending_tiles": 64,
+  "friction_profile": "overworld",
+  "notes": "Teaching map. Platforms are placed at 2, 3, and 4 tile rises so authors can see what a 101 px (3.16 tile) jump clears. The 4-tile wall is intentionally unreachable from the floor; a cloud is the intended route. Not loaded by the .exe.",
+  "tiles": [
+    {"x": 0, "y": 9, "id": 1, "x_amount": 12, "y_amount": 1, "kind": "classroom-floor"},
+    {"x": 0, "y": 10, "id": 3, "x_amount": 12, "y_amount": 2, "kind": "classroom-fill"},
+
+    {"x": 14, "y": 9, "id": 1, "x_amount": 4, "y_amount": 1, "kind": "2-tile-gap-landing"},
+    {"x": 14, "y": 10, "id": 3, "x_amount": 4, "y_amount": 2, "kind": "fill"},
+
+    {"x": 20, "y": 8, "id": 2, "x_amount": 3, "y_amount": 1, "kind": "1-tile-rise-cloud"},
+    {"x": 25, "y": 7, "id": 2, "x_amount": 3, "y_amount": 1, "kind": "2-tile-rise-cloud"},
+    {"x": 30, "y": 6, "id": 2, "x_amount": 3, "y_amount": 1, "kind": "3-tile-rise-cloud"},
+    {"x": 36, "y": 5, "id": 2, "x_amount": 4, "y_amount": 1, "kind": "unreachable-4-without-stairs"},
+
+    {"x": 42, "y": 9, "id": 5, "x_amount": 8, "y_amount": 1, "kind": "reset-floor"},
+    {"x": 42, "y": 10, "id": 4, "x_amount": 8, "y_amount": 2, "kind": "reset-fill"},
+    {"x": 50, "y": 9, "id": 6, "x_amount": 4, "y_amount": 1, "kind": "slick-demo"},
+    {"x": 50, "y": 10, "id": 3, "x_amount": 4, "y_amount": 2, "kind": "slick-fill"},
+    {"x": 56, "y": 9, "id": 1, "x_amount": 16, "y_amount": 1, "kind": "finish-floor"},
+    {"x": 56, "y": 10, "id": 3, "x_amount": 16, "y_amount": 2, "kind": "finish-fill"},
+
+    {"x": 33, "y": 3, "id": 2, "x_amount": 2, "y_amount": 1, "kind": "route-to-4-tile"},
+    {"x": 10, "y": 7, "id": 11, "x_amount": 1, "y_amount": 1, "kind": "bg-grass"},
+    {"x": 46, "y": 7, "id": 11, "x_amount": 1, "y_amount": 1, "kind": "bg-grass"},
+    {"x": 68, "y": 7, "id": 12, "x_amount": 1, "y_amount": 1, "kind": "goal-sign"}
+  ],
+  "coins": [
+    {"x": 4, "y": 8},
+    {"x": 5, "y": 8},
+    {"x": 15, "y": 8},
+    {"x": 21, "y": 7},
+    {"x": 26, "y": 6},
+    {"x": 31, "y": 5},
+    {"x": 33, "y": 2},
+    {"x": 37, "y": 4},
+    {"x": 51, "y": 8},
+    {"x": 60, "y": 8}
+  ],
+  "food": [
+    {"x": 44, "y": 8, "unit": "tiles", "note": "after the jump course, before the slick demo"}
+  ],
+  "enemies": [
+    {"x": 8, "y": 8, "turn": 1},
+    {"x": 58, "y": 8, "turn": -1}
+  ]
+}
