@@ -137,13 +137,27 @@ int main(int argc, char** argv) {
             dump_enemies(w, emy);
         }
 
-        if (warn && w == 2 && truncated != 6) {
-            std::fprintf(stderr, "expected world 2 to drop 6 records, got %d\n", truncated);
-            std::exit(1);
-        }
-        if (warn && w == 1 && maps.size() != 30) {
-            std::fprintf(stderr, "expected world 1 to store 30 of 32 records\n");
-            std::exit(1);
+        if (warn) {
+            const int score =
+                static_cast<int>(coins.size()) * 10 + static_cast<int>(emy.size()) * 5;
+            if (w == 1 && (maps.size() != 30 || truncated != 2 || score != 250)) {
+                std::fprintf(stderr,
+                             "world 1 contract: maps=30 truncated=2 score=250 (got "
+                             "maps=%zu truncated=%d score=%d)\n",
+                             maps.size(), truncated, score);
+                std::exit(1);
+            }
+            if (w == 2 && (truncated != 6 || score != 140)) {
+                std::fprintf(stderr,
+                             "world 2 contract: truncated=6 score=140 (got truncated=%d "
+                             "score=%d)\n",
+                             truncated, score);
+                std::exit(1);
+            }
+            if (w == 3 && (coins.size() != 7 || emy.size() != 7 || score != 105)) {
+                std::fprintf(stderr, "world 3 contract: 7 coins, 7 enemies, score=105\n");
+                std::exit(1);
+            }
         }
     };
 

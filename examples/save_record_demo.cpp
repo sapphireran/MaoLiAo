@@ -4,6 +4,7 @@
 #include "maoliao_core.hpp"
 
 #include <cstdio>
+#include <cstring>
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -80,7 +81,11 @@ int main(int argc, char** argv) {
         bool a = false;
         const int v = parse_save_world(c.text, &a);
         char name[64];
-        std::snprintf(name, sizeof(name), "parse('%s')", c.text);
+        if (std::strcmp(c.text, "2\n") == 0) {
+            std::snprintf(name, sizeof(name), "parse('2\\\\n')");
+        } else {
+            std::snprintf(name, sizeof(name), "parse('%s')", c.text);
+        }
         if (a != c.accept || (c.accept && v != c.value) || (!c.accept && c.value != 0 && v != c.value && c.text[0] != 'a')) {
             // accept flag is the contract; out-of-range still returns the scanned int
             if (a != c.accept) {

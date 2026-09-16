@@ -211,7 +211,7 @@ off-by-one extra enemy slot is ignored):
 | World | Coins ×10 | Enemies ×5 | Max if all stomped / shot |
 | --- | --- | --- | --- |
 | 1 | 20 × 10 = 200 | 10 × 5 = 50 | 250 |
-| 2 | 11 × 10 = 110 | 6 × 5 = 50 | 160 |
+| 2 | 11 × 10 = 110 | 6 × 5 = 30 | 140 |
 | 3 | 7 × 10 = 70 | 7 × 5 = 35 | 105 |
 
 Food does not add score. The pickup flash still uses `setScorePos`.

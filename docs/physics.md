@@ -238,10 +238,12 @@ One jump from rest, no ceiling, `TIME = 0.01`, `G = 30`:
 | 0 | −14.4914 | — | impulse |
 | 1 | −14.1914 | ≈ −4.15 | rising |
 | … | … | … | |
-| ~48 | ~0 | ~0 | apex ≈ 101 px above start |
+| ~49 | ~0 | ~0 | apex ≈ 101 px above start |
 | later | positive | downward | |
 
-Time to apex: `v0 / G` = 14.4914 / 30 ≈ **0.483 s** ≈ 48 frames.
+Time to apex: `v0 / G` = 14.4914 / 30 ≈ **0.483 s**. The discrete
+`TIME = 0.01` loop crosses `vY >= 0` on **frame 49** (0.49 s) with
+apex **100.996 px** (`examples/inertia_demo`).
 
 Time to `V_MAX` on grass if you hold `D` from rest, ignoring friction
 while `vX * a > 0` (friction is off while accelerating in the same

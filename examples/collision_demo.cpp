@@ -79,11 +79,12 @@ int main() {
     hero_vertices(400, 160, 0, hero);
     expect("coin_miss", is_hit(hero, coin_box), false);
 
-    // Inset: a hero whose *outer* corner is on the tile but the 1px
-    // inset vertices are not — Role::isHit should miss.
-    // Tile 0,0 size 32x32. Hero at (-30, 0): left vertices at x = -29 and 1.
+    // Inset: Role::isHit uses x+1 .. x+WIDTH-1. A 32px hero at x=-32 has
+    // its right-inset vertex at x=-1, just outside a tile that starts at 0.
+    // At x=-31 the right-inset vertex sits on x=0 and counts as a hit.
     MapRec origin{0, 0, 1, 1, 1};
-    expect("inset_miss_left", hit_map(-30, 0, 0, &origin, 1, 1), false);
+    expect("inset_miss_left", hit_map(-32, 0, 0, &origin, 1, 1), false);
+    expect("inset_edge_left", hit_map(-31, 0, 0, &origin, 1, 1), true);
     expect("inset_hit_left", hit_map(-20, 0, 0, &origin, 1, 1), true);
 
     // Camera: world-x = -x0 + screen_x. Hero pinned at XRIGHT=192,
