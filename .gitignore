@@ -338,3 +338,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# Portable example build output
+examples/build/
+examples/testdata/gameRecord.roundtrip.dat
