@@ -1,0 +1,129 @@
+{
+  "source": "MaoLiAo/scene.cpp Scene::createMap comments and Scene::show",
+  "cell_px": 32,
+  "tiles": [
+    {
+      "id": 1,
+      "name": "grass-brick",
+      "collides": true,
+      "sheet": "map.bmp",
+      "friction_band_w12": "medium",
+      "ascii": "#",
+      "notes": "Overworld surface."
+    },
+    {
+      "id": 2,
+      "name": "cloud",
+      "collides": true,
+      "sheet": "map.bmp",
+      "friction_band_w12": "medium",
+      "ascii": "C",
+      "notes": "World 3: the only solid that does not kill before the flower."
+    },
+    {
+      "id": 3,
+      "name": "dirt-under",
+      "collides": true,
+      "sheet": "map.bmp",
+      "friction_band_w12": "medium",
+      "ascii": "~",
+      "notes": "Fill under grass. Comments also call this desert underground."
+    },
+    {
+      "id": 4,
+      "name": "snow-under",
+      "collides": true,
+      "sheet": "map.bmp",
+      "friction_band_w12": "medium",
+      "ascii": "~"
+    },
+    {
+      "id": 5,
+      "name": "snow-surface",
+      "collides": true,
+      "sheet": "map.bmp",
+      "friction_band_w12": "medium",
+      "ascii": "="
+    },
+    {
+      "id": 6,
+      "name": "pipe-body",
+      "collides": true,
+      "sheet": "map.bmp",
+      "friction_band_w12": "high",
+      "ascii": "P",
+      "notes": "High friction in every world."
+    },
+    {
+      "id": 7,
+      "name": "pipe-shaft",
+      "collides": true,
+      "sheet": "map.bmp",
+      "friction_band_w12": "low",
+      "ascii": "v",
+      "notes": "World 3 only. Drawn 64 px wide."
+    },
+    {
+      "id": 8,
+      "name": "pipe-mouth-down",
+      "collides": true,
+      "sheet": "map.bmp",
+      "friction_band_w12": "low",
+      "ascii": "v",
+      "notes": "Collision box is 2x2 tiles per amount."
+    },
+    {
+      "id": 9,
+      "name": "unused-pipe-mouth",
+      "collides": true,
+      "sheet": "map.bmp",
+      "friction_band_w12": "low",
+      "ascii": "?",
+      "notes": "Mentioned in comments as a downward mouth variant. No live tile uses it."
+    },
+    {
+      "id": 10,
+      "name": "pipe-mouth-up",
+      "collides": true,
+      "sheet": "map.bmp",
+      "friction_band_w12": "low",
+      "ascii": "^",
+      "notes": "Collision box is 2x2 tiles per amount."
+    },
+    {
+      "id": 11,
+      "name": "background-grass",
+      "collides": false,
+      "sheet": "scenery.bmp",
+      "friction_band_w12": "none",
+      "ascii": "",
+      "notes": "hitMap stops at id < 11."
+    },
+    {
+      "id": 12,
+      "name": "victory-sign",
+      "collides": false,
+      "sheet": "scenery.bmp",
+      "friction_band_w12": "none",
+      "ascii": "",
+      "notes": "World 2 copy is past MAP_NUMBER and never loads."
+    },
+    {
+      "id": 13,
+      "name": "water",
+      "collides": false,
+      "sheet": "scenery.bmp",
+      "friction_band_w12": "none",
+      "ascii": ""
+    },
+    {
+      "id": 14,
+      "name": "tree",
+      "collides": false,
+      "sheet": "scenery.bmp",
+      "friction_band_w12": "none",
+      "ascii": "",
+      "notes": "World 2 trees are all past MAP_NUMBER."
+    }
+  ]
+}

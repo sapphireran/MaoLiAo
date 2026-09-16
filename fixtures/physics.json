@@ -1,0 +1,74 @@
+{
+  "source": "MaoLiAo/define.h",
+  "macros": {
+    "XSIZE": 512,
+    "YSIZE": 384,
+    "WIDTH": 32,
+    "HEIGHT": 32,
+    "X0": 64,
+    "Y0": 96,
+    "TIME": 0.01,
+    "STEP": 10,
+    "ENEMY_STEP": 1,
+    "K_MAP_BG": 5,
+    "XLEFT": 0,
+    "XRIGHT": 192,
+    "REAL_HEIGHT": 3.5,
+    "UNREAL_HEIGHT": 101,
+    "G": 30.0,
+    "V_MAX": 8.0,
+    "A_ROLE": 20.0,
+    "T1": 0.5,
+    "T2": 1.2,
+    "T3": 1.5,
+    "F": 0.003,
+    "LIFE": 5
+  },
+  "macro_expressions": {
+    "X0": "2*WIDTH",
+    "Y0": "3*HEIGHT",
+    "XRIGHT": "WIDTH*6",
+    "UNREAL_HEIGHT": "3*HEIGHT+5",
+    "F": "TIME*0.3"
+  },
+  "derived": {
+    "friction": {
+      "high": 0.5333333333333333,
+      "medium": 0.2222222222222222,
+      "low": 0.17777777777777778
+    },
+    "friction_formula": "(V_MAX / Tn) / G",
+    "jump_v0": -14.491376746189438,
+    "jump_v0_formula": "-sqrt(2 * G * REAL_HEIGHT)",
+    "pixel_scale": 28.857142857142858,
+    "pixel_scale_formula": "UNREAL_HEIGHT / REAL_HEIGHT",
+    "ending_distance_tiles": {
+      "1": 94,
+      "2": 104,
+      "3": 94
+    },
+    "max_bullet_distance_px": 480,
+    "bullet_step_px": 4,
+    "bullet_interval_s": 0.2
+  },
+  "caps": {
+    "MAP_NUMBER": 30,
+    "COINS_NUMBER": 70,
+    "FOOD_NUMBER": 5,
+    "SCORE_NUMBER": 5,
+    "ENEMY_TOTE": 30,
+    "BOMB_NUMBER": 5,
+    "BULLET_NUMBER": 30
+  },
+  "key_bits": {
+    "CMD_LEFT": 1,
+    "CMD_RIGHT": 2,
+    "CMD_UP": 4,
+    "CMD_DOWN": 8,
+    "CMD_SHOOT": 16,
+    "CMD_ESC": 32,
+    "VIR_RETURN": 64,
+    "VIR_RESTART": 128,
+    "VIR_HOME": 256
+  }
+}

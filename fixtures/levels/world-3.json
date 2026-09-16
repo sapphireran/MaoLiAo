@@ -1,0 +1,94 @@
+{
+  "world": 3,
+  "kind": "procedural",
+  "name": "pipe-run",
+  "source": "MaoLiAo/scene.cpp Scene::createMap world==3 / createCoin / createFood; MaoLiAo/role.cpp Role::createEnemy",
+  "ending_distance_tiles": 94,
+  "map_cap": 30,
+  "copy_loop": "i <= sizeof(m)/sizeof(m[0])  /* off-by-one; fixtures store the 30 defined tiles only */",
+  "generation": {
+    "column_count_authored": 10,
+    "column_count_used": 7,
+    "x_formula": "i * 10 + 10",
+    "height_formula": "rand() % (7 - 1) + 1",
+    "height_min": 1,
+    "height_max": 6,
+    "coin_count": 7,
+    "coin_x_formula": "k * 10 + 5",
+    "coin_y_formula": "rand() % (7 - 3) + 3",
+    "coin_y_min": 3,
+    "coin_y_max": 6,
+    "column_template": [
+      {"x": "x", "y": "height - 2", "id": 8, "xAmount": 1, "yAmount": 1},
+      {"x": "x", "y": 0, "id": 7, "xAmount": 1, "yAmount": "max(0, height - 2)"},
+      {"x": "x", "y": "4 + height", "id": 10, "xAmount": 1, "yAmount": 1},
+      {"x": "x", "y": "height + 6", "id": 7, "xAmount": 1, "yAmount": "max(0, 6 - height)"}
+    ],
+    "runway": {"x": 80, "y": 6, "id": 2, "xAmount": 25, "yAmount": 1},
+    "flag": {"x": 101, "y": 4, "id": 12, "xAmount": 1, "yAmount": 1}
+  },
+  "example": {
+    "notes": "Deterministic stand-in. Live MSVC rand() is unseeded; do not treat these heights as a CRT dump.",
+    "pipe_heights": [2, 4, 1, 5, 3, 6, 2],
+    "coin_heights": [3, 5, 4, 6, 3, 5, 4],
+    "tiles": [
+      {"x": 10, "y": 0, "id": 8, "xAmount": 1, "yAmount": 1},
+      {"x": 10, "y": 0, "id": 7, "xAmount": 1, "yAmount": 0},
+      {"x": 10, "y": 6, "id": 10, "xAmount": 1, "yAmount": 1},
+      {"x": 10, "y": 8, "id": 7, "xAmount": 1, "yAmount": 4},
+      {"x": 20, "y": 2, "id": 8, "xAmount": 1, "yAmount": 1},
+      {"x": 20, "y": 0, "id": 7, "xAmount": 1, "yAmount": 2},
+      {"x": 20, "y": 8, "id": 10, "xAmount": 1, "yAmount": 1},
+      {"x": 20, "y": 10, "id": 7, "xAmount": 1, "yAmount": 2},
+      {"x": 30, "y": -1, "id": 8, "xAmount": 1, "yAmount": 1},
+      {"x": 30, "y": 0, "id": 7, "xAmount": 1, "yAmount": 0},
+      {"x": 30, "y": 5, "id": 10, "xAmount": 1, "yAmount": 1},
+      {"x": 30, "y": 7, "id": 7, "xAmount": 1, "yAmount": 5},
+      {"x": 40, "y": 3, "id": 8, "xAmount": 1, "yAmount": 1},
+      {"x": 40, "y": 0, "id": 7, "xAmount": 1, "yAmount": 3},
+      {"x": 40, "y": 9, "id": 10, "xAmount": 1, "yAmount": 1},
+      {"x": 40, "y": 11, "id": 7, "xAmount": 1, "yAmount": 1},
+      {"x": 50, "y": 1, "id": 8, "xAmount": 1, "yAmount": 1},
+      {"x": 50, "y": 0, "id": 7, "xAmount": 1, "yAmount": 1},
+      {"x": 50, "y": 7, "id": 10, "xAmount": 1, "yAmount": 1},
+      {"x": 50, "y": 9, "id": 7, "xAmount": 1, "yAmount": 3},
+      {"x": 60, "y": 4, "id": 8, "xAmount": 1, "yAmount": 1},
+      {"x": 60, "y": 0, "id": 7, "xAmount": 1, "yAmount": 4},
+      {"x": 60, "y": 10, "id": 10, "xAmount": 1, "yAmount": 1},
+      {"x": 60, "y": 12, "id": 7, "xAmount": 1, "yAmount": 0},
+      {"x": 70, "y": 0, "id": 8, "xAmount": 1, "yAmount": 1},
+      {"x": 70, "y": 0, "id": 7, "xAmount": 1, "yAmount": 0},
+      {"x": 70, "y": 6, "id": 10, "xAmount": 1, "yAmount": 1},
+      {"x": 70, "y": 8, "id": 7, "xAmount": 1, "yAmount": 4},
+      {"x": 80, "y": 6, "id": 2, "xAmount": 25, "yAmount": 1},
+      {"x": 101, "y": 4, "id": 12, "xAmount": 1, "yAmount": 1}
+    ],
+    "coins": [
+      {"x": 5, "y": 3},
+      {"x": 15, "y": 5},
+      {"x": 25, "y": 4},
+      {"x": 35, "y": 6},
+      {"x": 45, "y": 3},
+      {"x": 55, "y": 5},
+      {"x": 65, "y": 4}
+    ],
+    "enemies": [
+      {"x": 24, "y": 4, "turn": -1},
+      {"x": 34, "y": 6, "turn": 1},
+      {"x": 37, "y": 3, "turn": -1},
+      {"x": 43, "y": 5, "turn": -1},
+      {"x": 63, "y": 7, "turn": 1},
+      {"x": 67, "y": 8, "turn": -1},
+      {"x": 86, "y": 5, "turn": 1}
+    ],
+    "food": [
+      {
+        "x": 10,
+        "y": 10,
+        "unit": "px",
+        "expression": "10, 10",
+        "notes": "Literal pixels in createFood world==3, not tile coordinates."
+      }
+    ]
+  }
+}
