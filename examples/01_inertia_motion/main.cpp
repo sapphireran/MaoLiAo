@@ -78,9 +78,10 @@ int main() {
     expectNear(vX, kVMax, 1e-9, "clamped to V_MAX");
 
     // Sign flip clamp: the game zeros vX when the step crosses through 0.
+    // Need |a| > v/TIME so one tick overshoots (2 / 0.01 = 200).
     double v = 2.0;
     const double before = v;
-    inertiaMove(v, kTime, -100.0);
+    inertiaMove(v, kTime, -500.0);
     const bool flipped = before * v < 0.0;
     expect(flipped, "strong brake crosses zero in one TIME");
     if (flipped) {

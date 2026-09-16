@@ -49,7 +49,7 @@ examples/
 | 03 | `define.h` bits + pause replace | OR masks, Esc → virtual key |
 | 04 | `gameRecord.dat` | accept 1–3, reject 0 and 4 |
 | 05 | `Scene::createMap` `u` switch | T1/T2/T3 tables, coast distance |
-| 06 | `main` order in miniature | run, camera `x0`, coin, stomp, death, ending |
+| 06 | `main` order in miniature | run, camera `x0`, coin, stomp, pit drop vs sprint-clear, ending |
 
 ## Why not link the real `.cpp` files
 

@@ -9,17 +9,27 @@ namespace maoliao {
 
 int heroWorldX(const SimHero& h) { return -static_cast<int>(h.x0) + h.x; }
 
-SimWorld makeDemoWorld() {
+SimWorld makeDemoWorld(DemoOptions opt) {
     SimWorld w;
     w.id = 1;
     w.endingTiles = 20;
-    // 24 tiles of grass at y = 9, a one-tile gap at x = 12 (pit), then more grass.
-    w.tiles.push_back({0, 9, 1, 12, 1, 0.0});
-    w.tiles.push_back({13, 9, 1, 16, 1, 0.0});
+    // Grass at y = 9. Optional 3-tile pit at grid x = 12..14.
+    // A single 32 px hole is narrower than the 30 px inset sprite box, so the
+    // hero can stride over it (same isHit limit as the EasyX game).
+    if (opt.pit) {
+        w.tiles.push_back({0, 9, 1, 12, 1, 0.0});
+        w.tiles.push_back({15, 9, 1, 16, 1, 0.0});
+    } else {
+        w.tiles.push_back({0, 9, 1, 28, 1, 0.0});
+    }
     assignFriction(w.tiles.data(), static_cast<int>(w.tiles.size()), 1);
-    w.coins.push_back({6, 8, true});
-    w.coins.push_back({16, 8, true});
-    w.enemies.push_back({8 * kWidth, 8 * kHeight, 1});
+    if (opt.coins) {
+        w.coins.push_back({6, 8, true});
+        w.coins.push_back({16, 8, true});
+    }
+    if (opt.enemy) {
+        w.enemies.push_back({8 * kWidth, 8 * kHeight, 1});
+    }
     return w;
 }
 
@@ -46,23 +56,33 @@ void collectCoins(Sim& sim) {
     }
 }
 
-void resolveEnemy(Sim& sim) {
+void stompIfFalling(Sim& sim) {
+    // Role::action only stomps while still airborne with vY > 0
+    // (landing on the same frame zeros vY first and becomes a side-hit).
+    if (sim.hero.vY <= 0.0) {
+        return;
+    }
     const int wx = heroWorldX(sim.hero);
-    const EnemyContact kind = classifyEnemyContact(
-        wx, sim.hero.y, sim.hero.vY, sim.world.enemies.data(), sim.world.enemies.size());
-    if (kind == EnemyContact::Stomp) {
-        for (auto& e : sim.world.enemies) {
-            if (e.turn == 0) {
-                continue;
-            }
-            if (hitEnemy(wx, sim.hero.y, &e, 1) != nullptr) {
-                e.turn = 0;
-                e.x = 0;
-                e.y = 0;
-                sim.hero.score += 5;
-            }
+    for (auto& e : sim.world.enemies) {
+        if (e.turn == 0) {
+            continue;
         }
-    } else if (kind == EnemyContact::Lethal) {
+        if (hitEnemy(wx, sim.hero.y, &e, 1) != nullptr) {
+            e.turn = 0;
+            e.x = 0;
+            e.y = 0;
+            sim.hero.score += 5;
+        }
+    }
+}
+
+void killIfSideHit(Sim& sim) {
+    if (sim.hero.vY > 0.0) {
+        return;
+    }
+    const int wx = heroWorldX(sim.hero);
+    if (hitEnemy(wx, sim.hero.y, sim.world.enemies.data(), sim.world.enemies.size()) !=
+        nullptr) {
         sim.hero.died = true;
     }
 }
@@ -93,9 +113,12 @@ void stepSim(Sim& sim, int command) {
             h.y = (h.y + kHeight / 2) / kHeight * kHeight;
             h.yy = h.y;
         }
-        if (h.vY > 0.0 && h.y > kYSize) {
-            h.died = true;
-            return;
+        if (h.vY > 0.0) {
+            stompIfFalling(sim);
+            if (h.y > kYSize) {
+                h.died = true;
+                return;
+            }
         }
     } else if (groundUnder(sim, heroWorldX(h), h.y + 1) == nullptr) {
         h.isFly = true;
@@ -145,7 +168,7 @@ void stepSim(Sim& sim, int command) {
     }
 
     collectCoins(sim);
-    resolveEnemy(sim);
+    killIfSideHit(sim);
 }
 
 std::string snapshotLine(const Sim& sim) {

@@ -17,6 +17,8 @@ The 1 px inset avoids getting stuck on seams.
 
 `isHit(p1, p2)` is **not** a full SAT test. It only asks whether each of `p1`’s four points is inside `p2`’s rectangle (`p2[0]` = min, `p2[1]` = max). A tall thin sprite that overlaps a tile without a corner inside that tile will miss. In practice tiles are large and the hero is 32×32, so it is close to AABB-vs-AABB.
 
+A **one-tile hole** (32 px) is narrower than the 30 px inset box, so a corner almost always stays on a neighbor. A **three-tile hole** (world 1’s water gaps) is wide enough to stand in, but at `V_MAX` the fall time to the next 32 px snap is about the same as the time to cross those 96 px — a sprint can land on the far lip. `examples/06_side_scroller_sim` asserts both the stationary death and the sprint clear.
+
 ## Tiles (`hitMap`)
 
 Walk `Scene::getMap()` while `0 < id < 11` and `i < MAP_NUMBER`.

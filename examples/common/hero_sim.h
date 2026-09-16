@@ -47,7 +47,13 @@ struct Sim {
     SimWorld world;
 };
 
-SimWorld makeDemoWorld();
+struct DemoOptions {
+    bool pit = true;
+    bool enemy = true;
+    bool coins = true;
+};
+
+SimWorld makeDemoWorld(DemoOptions opt = {});
 
 int heroWorldX(const SimHero& h);
 

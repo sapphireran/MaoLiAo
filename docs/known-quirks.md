@@ -75,6 +75,10 @@ Death / next world / restart all `Role world` again and `open` the same aliases.
 
 Pipe heights repeat each process. Call `srand` yourself if you restore the stage and want variety.
 
+## Narrow pits are optional
+
+`isHit` only tests four inset corners of a 32×32 sprite. A 32 px gap almost always still contains a corner. A 96 px (3-tile) gap — the water holes in world 1 — is a real hole if you stop, but at `V_MAX` you can often stride it before `y` leaves the far ledge’s snap range. The portable sim checks both outcomes.
+
 ## Horizontal wall test uses `world = 1`
 
 Walking into a world-3 pipe does **not** go through the “tile kills you” branch of `hitMap` (that branch is on the vertical probe with the real world id). You still die if the vertical `y+1` or overlap test runs with `world == 3` on the same frame — usually it does, because you are overlapping the pipe.
