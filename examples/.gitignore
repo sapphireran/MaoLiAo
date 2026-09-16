@@ -1,0 +1,4 @@
+# Built headless demos
+cpp/inertia_demo
+cpp/command_flags
+python/**/__pycache__/

@@ -1,0 +1,27 @@
+{
+  "collision_id_min": 1,
+  "collision_id_max": 10,
+  "pipe_double_size_ids": [8, 10],
+  "pipe_wide_blit_id": 7,
+  "tiles": {
+    "1": {"name": "grass_surface", "name_zh": "草砖", "collides": true, "friction": "T2", "glyph": "#"},
+    "2": {"name": "cloud", "name_zh": "云朵", "collides": true, "friction": "T2", "glyph": "C"},
+    "3": {"name": "grass_underground", "name_zh": "草砖地下", "collides": true, "friction": "T2", "glyph": "="},
+    "4": {"name": "snow_underground", "name_zh": "雪地地下", "collides": true, "friction": "T2", "glyph": "="},
+    "5": {"name": "snow_surface", "name_zh": "雪地地皮", "collides": true, "friction": "T2", "glyph": "S"},
+    "6": {"name": "pipe_mid_or_high_friction_floor", "name_zh": "管道中间", "collides": true, "friction": "T1", "glyph": "P"},
+    "7": {"name": "pipe_extension", "name_zh": "管道延长", "collides": true, "friction": "T3", "glyph": "P"},
+    "8": {"name": "pipe_mouth_down", "name_zh": "倒管道口", "collides": true, "friction": "T3", "glyph": "n"},
+    "9": {"name": "pipe_mouth_alt", "name_zh": "管道口", "collides": true, "friction": "T3", "glyph": "n"},
+    "10": {"name": "pipe_mouth_up", "name_zh": "向上的管道口", "collides": true, "friction": "T3", "glyph": "u"},
+    "11": {"name": "background_grass", "name_zh": "背景草", "collides": false, "friction": null, "glyph": ","},
+    "12": {"name": "goal_sign", "name_zh": "胜利牌子", "collides": false, "friction": null, "glyph": "G"},
+    "13": {"name": "water", "name_zh": "水流", "collides": false, "friction": null, "glyph": "~"},
+    "14": {"name": "tree", "name_zh": "树", "collides": false, "friction": null, "glyph": "T"}
+  },
+  "world3_friction_override": {
+    "ids_T1": [1, 3, 4, 5, 6],
+    "ids_T2": [2],
+    "default": "T3"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "world": 1,
+  "ending_tiles": 94,
+  "ending_pixels": 3008,
+  "colliding_extent_tiles": 106,
+  "loaded_maps": 30,
+  "authored_maps": 32,
+  "truncated": 2
+}

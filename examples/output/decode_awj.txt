@@ -1,0 +1,2 @@
+mask 21 (0x15) from keys 'A+W+J'
+21 = CMD_LEFT | CMD_UP | CMD_SHOOT
