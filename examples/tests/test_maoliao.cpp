@@ -10,8 +10,11 @@
 
 #include <cmath>
 #include <cstdio>
+#include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
+#include <vector>
 
 namespace {
 
@@ -29,6 +32,37 @@ void expect(bool cond, const char* msg) {
 
 void expect_near(double a, double b, double eps, const char* msg) {
     expect(std::fabs(a - b) <= eps, msg);
+}
+
+struct CsvTile {
+    int x = 0;
+    int y = 0;
+    int id = 0;
+    int x_amount = 0;
+    int y_amount = 0;
+};
+
+std::vector<CsvTile> load_map_csv(const std::string& path) {
+    std::vector<CsvTile> rows;
+    std::ifstream in(path);
+    std::string line;
+    if (!std::getline(in, line)) {
+        return rows;
+    }
+    while (std::getline(in, line)) {
+        if (line.empty()) {
+            continue;
+        }
+        std::stringstream ss(line);
+        CsvTile t;
+        char comma = 0;
+        if (!(ss >> t.x >> comma >> t.y >> comma >> t.id >> comma >> t.x_amount >>
+              comma >> t.y_amount)) {
+            continue;
+        }
+        rows.push_back(t);
+    }
+    return rows;
 }
 
 }  // namespace
@@ -184,6 +218,27 @@ int main() {
         expect_near(friction_for_id(1, 1), friction_u(kT2), 1e-12, "id1 grass");
         expect_near(friction_for_id(3, 2), friction_u(kT2), 1e-12, "w3 cloud T2");
         expect_near(friction_for_id(3, 8), friction_u(kT3), 1e-12, "w3 pipe T3");
+
+        const std::vector<CsvTile> csv1 = load_map_csv("data/world1_map.csv");
+        const std::vector<CsvTile> csv2 = load_map_csv("data/world2_map.csv");
+        expect(csv1.size() == w1.tiles.size(), "csv1 size matches authored w1");
+        expect(csv2.size() == w2.tiles.size(), "csv2 size matches authored w2");
+        bool csv1_ok = csv1.size() == w1.tiles.size();
+        for (std::size_t i = 0; csv1_ok && i < csv1.size(); ++i) {
+            csv1_ok = csv1[i].x == w1.tiles[i].x && csv1[i].y == w1.tiles[i].y &&
+                      csv1[i].id == w1.tiles[i].id &&
+                      csv1[i].x_amount == w1.tiles[i].x_amount &&
+                      csv1[i].y_amount == w1.tiles[i].y_amount;
+        }
+        expect(csv1_ok, "csv1 rows match authored w1 tiles");
+        bool csv2_ok = csv2.size() == w2.tiles.size();
+        for (std::size_t i = 0; csv2_ok && i < csv2.size(); ++i) {
+            csv2_ok = csv2[i].x == w2.tiles[i].x && csv2[i].y == w2.tiles[i].y &&
+                      csv2[i].id == w2.tiles[i].id &&
+                      csv2[i].x_amount == w2.tiles[i].x_amount &&
+                      csv2[i].y_amount == w2.tiles[i].y_amount;
+        }
+        expect(csv2_ok, "csv2 rows match authored w2 tiles");
     }
 
     // --- render ---
