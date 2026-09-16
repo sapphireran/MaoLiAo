@@ -5,6 +5,7 @@
 namespace maoliao {
 
 // Role::show walk-cycle: rolePos = -x0 + x, then STEP-sized parity.
+// Returns 0 when the original code leaves hero_iframe unchanged (odd STEP cells).
 inline int heroIFrame(int rolePos) {
     const int q = rolePos / kStep;
     if (q % 2 == 0 && q % 4 != 0) {
@@ -13,7 +14,12 @@ inline int heroIFrame(int rolePos) {
     if (q % 4 == 0) {
         return 1;
     }
-    return 1;  // odd STEP cells keep the previous convention (frame 1 in practice)
+    return 0;
+}
+
+inline int applyHeroIFrame(int current, int rolePos) {
+    const int next = heroIFrame(rolePos);
+    return next == 0 ? current : next;
 }
 
 // Sheet columns: facing right uses frames 0–1, facing left uses 3–4 (3*WIDTH offset).

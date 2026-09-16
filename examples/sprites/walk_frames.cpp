@@ -9,13 +9,23 @@ using maoliao::test::check;
 using maoliao::test::checkNear;
 
 static void testWalkParity() {
-    // rolePos / STEP % 4 == 0 → frame 1; % 2 == 0 && % 4 != 0 → frame 2.
-    check(heroIFrame(0) == 1, "pos 0");
-    check(heroIFrame(10) == 2, "pos 10 (one STEP, even not multiple of 4)");
-    check(heroIFrame(20) == 1, "pos 20");
-    check(heroIFrame(30) == 2, "pos 30");
-    check(heroIFrame(40) == 1, "pos 40");
-    check(heroIFrame(15) == 1, "odd STEP cell");
+    // q = rolePos / 10. Frame 1 on q % 4 == 0; frame 2 on even q not multiple of 4.
+    check(heroIFrame(0) == 1, "pos 0 → q=0 → frame 1");
+    check(heroIFrame(10) == 0, "pos 10 → q=1 odd → keep");
+    check(heroIFrame(20) == 2, "pos 20 → q=2 → frame 2");
+    check(heroIFrame(30) == 0, "pos 30 → q=3 odd → keep");
+    check(heroIFrame(40) == 1, "pos 40 → q=4 → frame 1");
+    check(heroIFrame(15) == 0, "pos 15 still q=1");
+
+    int frame = 1;
+    frame = applyHeroIFrame(frame, 10);
+    check(frame == 1, "odd cell keeps frame 1");
+    frame = applyHeroIFrame(frame, 20);
+    check(frame == 2, "even non-multiple-of-4 switches to 2");
+    frame = applyHeroIFrame(frame, 30);
+    check(frame == 2, "next odd cell keeps frame 2");
+    frame = applyHeroIFrame(frame, 40);
+    check(frame == 1, "multiple of 4 returns to frame 1");
 }
 
 static void testFacingColumns() {
@@ -57,7 +67,8 @@ static void testCoinAndBomb() {
         bomb += kTime * 10.0;
         ++frames;
     }
-    check(frames == 40, "bomb lasts 0.4 s (4 extra frames of TIME*10 from 1 to 5)");
+    // TIME*10 is 0.1; 1 → 5 takes ~40 additions, ±1 for binary 0.01.
+    check(frames >= 39 && frames <= 41, "bomb lasts about 0.4 s");
 }
 
 static void testScenery() {
