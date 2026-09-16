@@ -68,22 +68,27 @@ int main(int argc, char** argv) {
         return fail("roundtrip 3");
     }
 
-    // Sample committed next to the original game sources, if present.
-    const char* sample = "../MaoLiAo/gameRecord.dat";
-    const char* sample2 = "../../MaoLiAo/gameRecord.dat";
-    const char* path = nullptr;
-    if (fs::exists(sample)) {
-        path = sample;
-    } else if (fs::exists(sample2)) {
-        path = sample2;
+    // Walk toward the repo root looking for the committed sample.
+    fs::path here = fs::current_path();
+    std::optional<SaveData> shipped;
+    fs::path shippedPath;
+    for (int up = 0; up < 6; ++up) {
+        const fs::path candidate = here / "MaoLiAo" / "gameRecord.dat";
+        if (fs::exists(candidate)) {
+            shipped = readSaveFile(candidate.string());
+            shippedPath = candidate;
+            break;
+        }
+        if (!here.has_parent_path() || here.parent_path() == here) {
+            break;
+        }
+        here = here.parent_path();
     }
-    if (path) {
-        const auto shipped = readSaveFile(path);
-        if (shipped) {
-            std::cout << "shipped " << path << " world=" << shipped->world
-                      << " valid=" << (validWorld(shipped->world) ? "yes" : "no") << "\n";
-        } else {
-            std::cout << "shipped " << path << " unreadable or empty\n";
+    if (shipped) {
+        std::cout << "shipped " << shippedPath << " world=" << shipped->world
+                  << " valid=" << (validWorld(shipped->world) ? "yes" : "no") << "\n";
+        if (!validWorld(shipped->world)) {
+            return fail("shipped sample is not worlds 1–3");
         }
     }
 

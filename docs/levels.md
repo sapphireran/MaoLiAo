@@ -70,11 +70,11 @@ Ending rail: world-x > 94 tiles (3008 px).
 
 ## World 2 — snow platforms
 
-Floating clouds, broken snow ground, a 1-wide staircase at x=67–70, trees, goal sign at `(111, 1)`.
+Floating clouds, broken snow ground, a 1-wide staircase at x=67–75, trees, and an authored goal sign at `(111, 1)` that the 30-stamp cap **drops** (see [known-issues.md](known-issues.md)). The clear is still the 104-tile distance rail, not the plaque.
 
 | Kind | Authored | Stored |
 | --- | ---: | ---: |
-| Map stamps | 36 | 30 (six decorations / stairs overflow) |
+| Map stamps | 36 | 30 (goal plaque, trees, one grass tuft dropped) |
 | Coins | 11 | 11 |
 | Enemies | 6 | 6 |
 | Food | 1 | pixel `(39*32 - 32/3, 3*32 + 32/5) ≈ (1237, 102)` |
@@ -83,7 +83,7 @@ Coins sit on the high cloud `(25..27, 2)`, a vertical climb at x=32, and three s
 
 Ending rail: 104 tiles (3328 px).
 
-Because six stamps are dropped, the dumped ASCII map and the running game can disagree on trees and the far staircase. That is a shipped limitation, not a dumper bug. See [known-issues.md](known-issues.md).
+Because six stamps are dropped, the running game never draws the four trees, the grass tuft at x=42, or the goal plaque. That is a shipped limitation, not a dumper bug. Compare `level_dump --stored` with `--authored`.
 
 ## World 3 — pipe gauntlet (Flappy-style)
 

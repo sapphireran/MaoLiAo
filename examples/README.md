@@ -20,6 +20,8 @@ Binaries land in `examples/bin/`. Each process prints a short report and exits `
 | `camera_parallax` | Right-rail scroll, `xBg` ≈ `|x0| / 5`, ending releases the rail |
 | `input_decode` | WASD/JK bit masks from `define.h` |
 
+`make test` also diffs `level_dump` against [expected/](expected/README.md).
+
 `level_dump` flags:
 
 ```text

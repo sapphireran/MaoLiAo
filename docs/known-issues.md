@@ -8,9 +8,12 @@ These are observations from reading the 2020 sources. The examples document them
 
 ## `MAP_NUMBER = 30` overflow
 
-World 1 authors 32 stamps, world 2 authors 36. The last water tiles (world 1) and several trees / stairs / the far goal neighborhood (world 2) are not copied into `map[]`. World 3 fits exactly.
+World 1 authors 32 stamps, world 2 authors 36. Copies stop at index 29.
 
-`examples/level_dump` prints `authored` vs `stored` for each world.
+- World 1 drops the water stamps at tiles x=71 and x=75. The goal plaque at `(101, 7)` is index 27, so it **is** drawn.
+- World 2 drops `{42,8,11}` (grass decoration), **`{111,1,12}` (the goal plaque)**, and the four trees. The cloud staircase at x=67–75 is inside the cap and **is** drawn. The stage still ends by distance (104 tiles), so a missing plaque does not block a clear.
+
+World 3 fits exactly (30). `examples/level_dump --stored` vs `--authored` shows the difference.
 
 ## Off-by-one copies
 

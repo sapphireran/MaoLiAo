@@ -39,7 +39,11 @@ test: all
 	$(BIN_DIR)/save_roundtrip >/tmp/maoliao_save.txt; \
 	$(BIN_DIR)/camera_parallax >/tmp/maoliao_camera.txt; \
 	$(BIN_DIR)/input_decode >/tmp/maoliao_input.txt; \
-	echo "all example programs returned 0"
+	$(BIN_DIR)/level_dump --stored 1 | sed '/^OK$$/d' | diff -u expected/world1_stored.txt -; \
+	$(BIN_DIR)/level_dump --stored 2 | sed '/^OK$$/d' | diff -u expected/world2_stored.txt -; \
+	$(BIN_DIR)/level_dump --authored 2 | sed '/^OK$$/d' | diff -u expected/world2_authored.txt -; \
+	$(BIN_DIR)/level_dump 3 | sed '/^OK$$/d' | diff -u expected/world3_sample.txt -; \
+	echo "all example programs returned 0 and level dumps match expected/"
 
 clean:
 	rm -rf $(BIN_DIR)
