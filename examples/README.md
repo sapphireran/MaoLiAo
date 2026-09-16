@@ -23,7 +23,7 @@ make test     # every C++ program + the three Python scripts
 make clean
 ```
 
-`make test` is the whole suite. Each binary prints a short trace and `name: ok`.
+`make test` is the whole suite (nine C++ programs plus three Python scripts). Each binary prints a short trace and `name: ok`.
 
 ## Programs
 
@@ -37,6 +37,7 @@ make clean
 | `scoring_rules` | +10 coin, +5 stomp/shot, 5 lives, food arms only | World 1 sweep = 250 |
 | `camera_scroll` | Right rail at x=192, `x0` slide, sky `/5` | Hold-D pins the rail; ending ignores it |
 | `world3_pipes` | Seven pipe clusters + flap | Mouth rows, gap at `h+1`, flap replaces `vY` |
+| `enemy_patrol` | 1 px walk, wall/ledge reverse, stomp vs rise | Reversals on a 5-tile ledge; rising jump is death |
 
 ## Header notes
 

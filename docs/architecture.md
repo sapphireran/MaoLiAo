@@ -122,4 +122,4 @@ That is why `getMap()`, `getCoins()`, `getFood()`, and `getHero()` return raw po
 - No map file format — worlds are C arrays in `createMap`.
 - No separate camera class — `x0` *is* the camera.
 
-The portable model in `examples/include/maoliao_model.hpp` keeps this same split: constants, integrator, AABB, tiles, camera rail.
+The portable model in `examples/include/maoliao_model.hpp` keeps this same split: constants, integrator, AABB, tiles, camera rail. Enemy patrol rules are in [enemies.md](enemies.md).

@@ -3,7 +3,7 @@ CXXFLAGS ?= -std=c++17 -O2 -Wall -Wextra -Wpedantic -Iinclude
 BIN      := bin
 
 PROGS := jump_trajectory inertia_kinematics aabb_collision command_bits \
-         map_layout scoring_rules camera_scroll world3_pipes
+         map_layout scoring_rules camera_scroll world3_pipes enemy_patrol
 
 .PHONY: all test clean python
 

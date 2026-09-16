@@ -66,6 +66,7 @@ Forward-declared `Role` / `Scene` pointers keep the two headers from including e
 - [Input and save](docs/input-and-save.md) — command bits, pause menu, `gameRecord.dat`
 - [Assets](docs/assets.md) — bitmaps, sprite sheets, MCI aliases
 - [Known quirks](docs/known-quirks.md) — header typos, map overflow, world-3 off-by-one
+- [Enemies](docs/enemies.md) — patrol, stomp versus rise, slot lifetime
 - [Verified numbers](docs/verified-numbers.md) — apex, friction, rail, scores from `make test`
 
 ## Portable examples

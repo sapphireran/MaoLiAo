@@ -44,6 +44,8 @@ Hold `D` from spawn `(64, ·)`:
 
 World 1 coin+stomp sweep: `20*10 + 10*5` = **250**. World 2 coins+shots: `11*10 + 6*5` = **140**. Lives: **5**.
 
+A walker on a 5-tile platform `[320, 480] × [256, 288]` reverses at **x=448** (right ledge probe) and **x=320** (left). Rising jump into an enemy is death; falling is a stomp.
+
 ## Collision
 
 Grass platform `tile (0,9) × 15×1` is the pixel box `[0, 480] × [288, 320]`. A hero at `(64, 256)` does **not** hit until the game’s `(x, y+1)` ground probe. Pipe mouths (`id` 8, 10) are **64×64**; id 7 shafts stay **32** px wide. Ids 11–14 never enter `hitMap`. World 3 kills on every colliding id except clouds, unless `isShoot` is set.
