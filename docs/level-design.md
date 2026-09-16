@@ -107,4 +107,4 @@ for i in 0..9:
 | 2 | 104 * 32 = 3328 | 104 |
 | 3 | 94 * 32 = 3008 | 94 |
 
-`world_dump` 示例会打印前两关的 ASCII 平面图，并标出截断线。
+`world_dump` 示例会打印前两关的 ASCII 平面图，并标出截断线。一份冻结合在 [world-maps.md](world-maps.md)。

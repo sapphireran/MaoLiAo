@@ -12,5 +12,6 @@
 | [level-design.md](level-design.md) | 地图块字段、tile id、三关表、`MAP_NUMBER` 截断 |
 | [assets.md](assets.md) | `res\` 路径、精灵图行、mci 别名 |
 | [study-notes.md](study-notes.md) | 头文件宏写错、循环越界、MessageBox 参数对调等 |
+| [world-maps.md](world-maps.md) | `world_dump` 打出来的第一、二关 ASCII |
 
 读源码建议顺序：`define.h` → `inertia.cpp` → `main.cpp` → `role.cpp` 的 `action` → `scene.cpp` 的 `createMap`。
