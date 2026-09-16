@@ -16,6 +16,8 @@ examples/
   06_jump_sim.cpp            101 px design jump, flappy tap
   07_friction.cpp            T1/T2/T3 coast times, camera pin
   08_bullet.cpp              4 px/tick, max range, hold-fire
+  09_define_sync.cpp         portable constants vs define.h
+  10_world_walk.cpp          no-jump pit death vs auto-hop
   Makefile
 ```
 

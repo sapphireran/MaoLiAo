@@ -20,6 +20,8 @@ cd examples && make test
 | `06_jump_sim` | ~101 px rise; land snap; world-3 double tap |
 | `07_friction` | T1/T2/T3 coast times; camera pin at 192 |
 | `08_bullet` | +4 px/tick; expire at 480; hold-fire 4 shots / 0.61 s |
+| `09_define_sync` | Every `define.h` number matches `maoliao_core.hpp` |
+| `10_world_walk` | No-jump sprint dies in the first pit; auto-hop clears it |
 
 Failed checks print `FAIL` and make `make test` return non-zero.
 That is the regression gate for later personal tweaks to the math

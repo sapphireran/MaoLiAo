@@ -111,24 +111,36 @@ int main()
         expect(ice.u > grass.u, "T1 u is larger (stops faster)");
     }
 
-    // Most coins sit on or just above a solid. The x=74 stack is a
-    // vertical column hanging above the isolated snow block at (74,9):
-    // only (74,8) is supported; (74,5..7) float on purpose.
+    // Floating pickups (no solid in the cell or the cell below):
+    //   * (74,5..7) stacked above the isolated block at (74,9)
+    //   * (82,84,86,88),7  — high coins in the 82–89 zigzag; the y=8
+    //     partners sit on the grass at y=9
     int floating_coins = 0;
+    int stack74 = 0;
+    int zigzag7 = 0;
     for (int i = 0; i < maoliao::kWorld1CoinCount; ++i) {
         const maoliao::Vec2i c = maoliao::kWorld1Coins[i];
         if (!supported(maoliao::kWorld1Map, maoliao::kWorld1MapCount, c.x, c.y)) {
             std::printf("  floating coin (%d,%d)\n", c.x, c.y);
             ++floating_coins;
+            if (c.x == 74 && c.y >= 5 && c.y <= 7) {
+                ++stack74;
+            }
+            if (c.y == 7 && (c.x == 82 || c.x == 84 || c.x == 86 || c.x == 88)) {
+                ++zigzag7;
+            }
         }
     }
-    expect(floating_coins == 3, "three stacked coins float above (74,9)");
+    expect(floating_coins == 7 && stack74 == 3 && zigzag7 == 4,
+           "7 floating coins: 3-stack at x=74 plus 4 zigzag highs");
     expect(maoliao::kWorld1CoinCount == 20, "world 1 coin count");
 
-    // (66,8) sits in the pit between the snow run (ends x=63) and the
-    // ice patch (starts x=67) — a troll spawn, same as the original list.
+    // Unsupported enemies:
+    //   * (66,8) in the pit between snow (ends 63) and ice (starts 67)
+    //   * (92,6) above the home-stretch grass, just past the (90,7) pipe
     int floating_enemies = 0;
     int pit_enemy = 0;
+    int pipe_enemy = 0;
     for (int i = 0; i < maoliao::kWorld1EnemyCount; ++i) {
         const maoliao::Enemy e = maoliao::kWorld1EnemiesTiles[i];
         if (!supported(maoliao::kWorld1Map, maoliao::kWorld1MapCount, e.x, e.y)) {
@@ -138,10 +150,13 @@ int main()
             if (e.x == 66 && e.y == 8) {
                 pit_enemy = 1;
             }
+            if (e.x == 92 && e.y == 6) {
+                pipe_enemy = 1;
+            }
         }
     }
-    expect(floating_enemies == 1 && pit_enemy == 1,
-           "only the pit enemy at (66,8) is unsupported");
+    expect(floating_enemies == 2 && pit_enemy == 1 && pipe_enemy == 1,
+           "two airborne enemies: pit (66,8) and (92,6)");
     expect(maoliao::kWorld1EnemyCount == 10, "world 1 enemy count");
 
     // Food is pixel-space: 14*32, 5*32.

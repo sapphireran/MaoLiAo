@@ -4,7 +4,7 @@
 #   make clean  remove bin/
 
 CXX      ?= g++
-CXXFLAGS ?= -std=c++11 -Wall -Wextra -pedantic -O2 -Iinclude
+CXXFLAGS ?= -std=c++11 -Wall -Wextra -Werror -pedantic -O2 -Iinclude
 LDFLAGS  ?=
 
 BIN      := bin
@@ -20,7 +20,9 @@ PROGRAMS := \
 	05_map_layout \
 	06_jump_sim \
 	07_friction \
-	08_bullet
+	08_bullet \
+	09_define_sync \
+	10_world_walk
 
 BINS := $(addprefix $(BIN)/,$(PROGRAMS))
 

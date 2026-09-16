@@ -87,11 +87,13 @@ Decor: grass tufts (id 11) at (19,6), (23,6), (32,7), (49,7), (53,7),
 Coins (tile cells):
 
 ```
-(10–13, 5)
-(66–69, 3)
-(74, 5) (74, 6) (74, 7) (74, 8)
-(82,7) (83,8) (84,7) (85,8) (86,7) (87,8) (88,7) (89,8)
+(10–13, 5)                 on the first cloud
+(66–69, 3)                 on the high cloud
+(74, 5) (74, 6) (74, 7) (74, 8)   vertical stack; only (74,8) sits on the isolated block
+(82,7) (83,8) (84,7) (85,8) (86,7) (87,8) (88,7) (89,8)   zigzag; y=7 coins float
 ```
+
+`examples/05_map_layout` flags seven floating coins (the 74-stack highs plus the four zigzag y=7 cells) and two airborne enemies: `(66,8)` in the snow/ice pit and `(92,6)` past the last pipe.
 
 Food (pixels, not tiles): `(14 * 32, 5 * 32)` — one mushroom.
 
