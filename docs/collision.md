@@ -9,7 +9,7 @@ r[2] = (x - xmap + 1,           y + HEIGHT - 1)
 r[3] = (x - xmap + WIDTH - 1,   y + HEIGHT - 1)
 ```
 
-`xmap` is `(int)hero.x0` so tests run in **world** space. `isHit(p1, p2)` is a point-in-rect for those four points against `p2[0]..p2[1]` (top-left / bottom-right). It is **not** a full rectangle-vs-rectangle test: a large box can overlap a tile without any of its inset corners landing inside. For 32×32 actors versus 32×N tiles this is usually good enough.
+`xmap` is `(int)hero.x0` so tests run in **world** space. `isHit(p1, p2)` is a point-in-rect for those four points against `p2[0]..p2[1]` (top-left / bottom-right). It is **not** a full rectangle-vs-rectangle test: a small box sitting in the actor’s interior (or a sliver that only overlaps the discarded 1 px border) can miss. For 32×32 actors versus 32×N tiles this is usually good enough.
 
 A portable clone of the test lives in `examples/aabb_collision.cpp`.
 

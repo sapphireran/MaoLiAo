@@ -25,6 +25,7 @@ Requires a C++17 compiler (`g++` or `clang++`). No extra libraries.
 | `save_record` | Round-trip `gameRecord.dat` integer 1–3 |
 | `camera_rail` | `XRIGHT` clamp, `x0` camera, ending / passed |
 | `friction_slide` | Stopping distance by tile `u`, air has no brake |
+| `life_cycle` | Deaths, world clears, pause-home, save-does-not-keep-lives |
 
 Shared headers live in `portable/`:
 

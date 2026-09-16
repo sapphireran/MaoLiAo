@@ -1,7 +1,7 @@
 CXX      ?= g++
 CXXFLAGS ?= -std=c++17 -Wall -Wextra -Wpedantic -O2 -I.
 
-DEMOS = physics_kinematics jump_arc aabb_collision level_dump command_bits save_record camera_rail friction_slide
+DEMOS = physics_kinematics jump_arc aabb_collision level_dump command_bits save_record camera_rail friction_slide life_cycle
 
 .PHONY: all test clean
 
@@ -31,6 +31,9 @@ camera_rail: camera_rail.cpp portable/maoliao_math.hpp
 friction_slide: friction_slide.cpp portable/maoliao_math.hpp
 	$(CXX) $(CXXFLAGS) -o $@ friction_slide.cpp
 
+life_cycle: life_cycle.cpp portable/maoliao_math.hpp
+	$(CXX) $(CXXFLAGS) -o $@ life_cycle.cpp
+
 test: all
 	./physics_kinematics
 	./jump_arc
@@ -40,6 +43,7 @@ test: all
 	./save_record
 	./camera_rail
 	./friction_slide
+	./life_cycle
 
 clean:
 	rm -f $(DEMOS) gameRecord.example.dat

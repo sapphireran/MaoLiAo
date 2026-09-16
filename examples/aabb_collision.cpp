@@ -44,12 +44,14 @@ int main() {
     expect("pipe_is_64_wide", pipeBox.x1 - pipeBox.x0 == 64);
     expect("pipe_is_64_tall", pipeBox.y1 - pipeBox.y0 == 64);
 
-    // Inset corners: a 32x32 actor whose body overlaps but inset corners miss.
-    // Tile [0,32]x[0,32], actor at (-2, -2) — only a 2 px overlap; inset
-    // corners sit at (-1,-1) etc. and miss. Documents isHit's limitation.
-    const Tile block{0, 0, 1, 1, 1};
-    const auto corners = actorCorners(-2, -2, 0);
-    expect("shallow_overlap_can_miss", !isHit(corners, tileRect(block)));
+    // isHit only tests four inset corners. A small box in the actor's
+    // interior (or a 32x32 tile that only overlaps the discarded 1 px
+    // border) can miss even though the full sprites overlap.
+    const Rect interiorSpike{10, 10, 14, 14};
+    const auto corners = actorCorners(0, 0, 0);
+    expect("interior_spike_misses_corners", !isHit(corners, interiorSpike));
+    const Rect fullOverlap{0, 0, 32, 32};
+    expect("full_tile_hits_inset_corner", isHit(corners, fullOverlap));
 
     // Coin at (10,5).
     const auto heroOnCoin = actorCorners(10 * kWidth, 5 * kHeight, 0);

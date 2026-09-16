@@ -7,6 +7,7 @@ command_bits
 save_record
 camera_rail
 friction_slide
+life_cycle
 gameRecord.example.dat
 *.o
 *.exe
