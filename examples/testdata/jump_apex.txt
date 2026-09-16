@@ -1,0 +1,7 @@
+# From examples/01_inertia_jump (dt=0.01, G=30, H=3.5)
+takeoff_vY=-14.491376746189438
+apex_frame=48
+apex_height_px=100.996
+land_frame=97
+analytic_hang_s=0.966092
+px_per_metre=28.857142857
