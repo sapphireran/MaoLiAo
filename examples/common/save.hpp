@@ -8,9 +8,10 @@ namespace mla {
 // Valid worlds in the title-screen loader are 1, 2, and 3.
 
 struct SaveResult {
-    bool ok = false;
-    int world = 0;
+    bool ok;
+    int world;
     std::string error;
+    SaveResult() : ok(false), world(0) {}
 };
 
 bool writeWorld(const std::string& path, int world, std::string& error);

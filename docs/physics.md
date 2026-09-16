@@ -54,12 +54,16 @@ vY = -sqrt(2 * G * REAL_HEIGHT)
 While `isFly`:
 
 ```
-dy_m  = Inertia::move(vY, TIME, +G)     // gravity is +G (down)
-yy   -= -dy_m * px_per_metre            // the double negation is in role.cpp
+dy_m  = Inertia::move(vY, TIME, +G)     // gravity is +G in the metre model
+yy   -= -dy_m * px_per_metre            // yy += dy_m * scale  (role.cpp)
 ```
 
-So the on-screen Y **increases** when falling (EasyX Y-down). After each
-step the code probes `hitMap(x, y+1)`. A hit with `vY > 0` lands:
+Takeoff `vY` is negative, so the first `dy_m` is negative and **EasyX Y
+decreases** (up the screen). After each step the code probes
+`hitMap(x, y+1)`. The extra pixel is required because `isHit` insets
+the sprite by 1 px: a cat whose feet sit exactly on a tile top does
+not overlap that tile. `examples/03_collision_aabb` shows both cases.
+A hit with `vY > 0` lands:
 `isFly = false`, `vY = 0`, Y snapped to the tile grid
 `(y + HEIGHT/2) / HEIGHT * HEIGHT`.
 

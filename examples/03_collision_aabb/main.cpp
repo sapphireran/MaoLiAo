@@ -25,10 +25,15 @@ int main() {
     c.expect(pipe.right - pipe.left == 64 && pipe.bottom - pipe.top == 64,
              "id 10 uses 64x64");
 
-    // Standing on the grass: sprite top-left at y = 8*32 = 256 (one tile above).
-    const mla::Point onGrass{64, 8 * 32};
-    c.expect(mla::vertexHitsRect(onGrass, grass),
-             "sprite on grass: bottom vertices in the tile");
+    // A sprite whose feet sit exactly on the tile top (y = 256, bottom = 288)
+    // does NOT hit: vertices are inset by 1 px, so y=287 is still above 288.
+    // Role therefore probes hitMap(x, y+1) to detect "standing on".
+    const mla::Point flushFeet{64, 8 * 32};
+    c.expect(!mla::vertexHitsRect(flushFeet, grass),
+             "flush feet on tile top miss (1px inset)");
+    const mla::Point probeDown{64, 8 * 32 + 1};
+    c.expect(mla::vertexHitsRect(probeDown, grass),
+             "Role ground probe uses y+1 and hits");
 
     const mla::Point above{64, 7 * 32};
     c.expect(!mla::vertexHitsRect(above, grass),

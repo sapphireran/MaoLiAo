@@ -7,22 +7,22 @@
 namespace mla {
 
 struct MapRec {
-    int x = 0;
-    int y = 0;
-    int id = 0;
-    int xAmount = 0;
-    int yAmount = 0;
+    int x;
+    int y;
+    int id;
+    int xAmount;
+    int yAmount;
 };
 
 struct EnemyRec {
-    int x = 0;
-    int y = 0;
-    int turn = 0;
+    int x;
+    int y;
+    int turn;
 };
 
 struct PointRec {
-    int x = 0;
-    int y = 0;
+    int x;
+    int y;
 };
 
 // Authored tables transcribed from Scene::createMap / createCoin and

@@ -9,9 +9,10 @@
 namespace mla {
 
 struct Patrol {
-    int x = 0;  // world pixels
-    int y = 0;
-    int turn = 1;
+    int x;
+    int y;
+    int turn;
+    Patrol() : x(0), y(0), turn(1) {}
 };
 
 // Reverse if the body overlaps a solid or the leading foot has no floor.

@@ -3,10 +3,11 @@
 namespace mla {
 
 struct Camera {
-    double x = 64;     // window-space hero X (xx)
-    double x0 = 0;     // camera origin
-    double vX = 0;
-    double xBg = 0;
+    double x;
+    double x0;
+    double vX;
+    double xBg;
+    Camera() : x(64), x0(0), vX(0), xBg(0) {}
 };
 
 // Apply the Role camera-window rules after a horizontal step.

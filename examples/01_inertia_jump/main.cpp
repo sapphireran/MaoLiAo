@@ -23,8 +23,12 @@ int main() {
 
     double vY = mla::jumpTakeoffVy();
     std::printf("takeoff vY = %.6f m/s  (analytic -sqrt(2gH))\n", vY);
+    std::printf("Role: yy += move(vY,dt,G) * px/m   (EasyX Y grows down, so jump "
+                "decreases yy)\n");
 
-    double y = 0;  // pixels, EasyX-down after the same double-negation as Role
+    // height = pixels above the takeoff ground (up positive).
+    // Game EasyX: yy += toPixels(move);  height = -delta_yy.
+    double height = 0;
     std::vector<Sample> log;
     int apexFrame = 0;
     double apexY = 0;
@@ -35,16 +39,15 @@ int main() {
         s.frame = f;
         s.t = f * mla::kTime;
         s.vY = vY;
-        s.yPx = y;
+        s.yPx = height;
         log.push_back(s);
-        if (y > apexY) {
-            apexY = y;
+        if (height > apexY) {
+            apexY = height;
             apexFrame = f;
         }
         const double dy = mla::integrate(vY, mla::kTime, mla::kG);
-        // role.cpp: yy = yy - (-move(...) * scale)
-        y -= -mla::toPixels(dy);
-        if (f > 0 && y <= 0.0 && landFrame < 0) {
+        height -= mla::toPixels(dy);
+        if (f > 0 && height <= 0.0 && landFrame < 0) {
             landFrame = f + 1;
             break;
         }

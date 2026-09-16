@@ -3,15 +3,19 @@
 namespace mla {
 
 struct Point {
-    int x = 0;
-    int y = 0;
+    int x;
+    int y;
+    Point() : x(0), y(0) {}
+    Point(int x_, int y_) : x(x_), y(y_) {}
 };
 
 struct Rect {
-    int left = 0;
-    int top = 0;
-    int right = 0;
-    int bottom = 0;
+    int left;
+    int top;
+    int right;
+    int bottom;
+    Rect() : left(0), top(0), right(0), bottom(0) {}
+    Rect(int l, int t, int r, int b) : left(l), top(t), right(r), bottom(b) {}
 };
 
 // Role::isHit: any of the sprite's four vertices inside [p2[0], p2[1]].
