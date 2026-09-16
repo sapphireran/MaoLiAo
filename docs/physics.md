@@ -103,11 +103,12 @@ until `x > XSIZE` (off the right of the 512 px window), which sets `passed`.
 
 Friction is applied only when velocity and walk acceleration disagree
 (`vX * a <= 0` and `vX != 0`), i.e. you released the key or you are braking.
-The extra term is:
+`Xabs` starts as the signed `vX` and is negated only in the leftward branch,
+so `k` is symmetric:
 
 ```
-k  = +4   if vX < 0     // Xabs/vX + 3 = -1 + 3
-k  = -2   if vX > 0     // Xabs/vX - 3 =  1 - 3
+k  = +2   if vX < 0     // |vX|/vX + 3 = -1 + 3
+k  = -2   if vX > 0     // |vX|/vX - 3 =  1 - 3
 a1 = k * G * map->u     // 0 if airborne (map == NULL)
 ```
 
@@ -125,9 +126,10 @@ u = (V_MAX / T) / G
 | other | T3 = 1.5 | 8 / 1.5 / 30 ≈ 0.1778 | Default |
 | world 3 ids 1–6 | T1 = 0.5 | ≈ 0.5333 | Pipes use the sticky set |
 
-Because `k` is not symmetric, leftward and rightward braking are not the same
-strength. After `move`, if `vX` flipped sign, it is snapped to 0 (no oscillation
-through rest). Then `|vX|` is capped at `V_MAX`.
+`k` only chooses the sign of the friction acceleration so it always opposes
+`vX`. After `move`, if `vX` flipped sign, it is snapped to 0 (no oscillation
+through rest). Then `|vX|` is capped at `V_MAX` — but only if the **old**
+`|vX|` was already above the cap, because `Xabs` is captured before `move`.
 
 Pixel step:
 
