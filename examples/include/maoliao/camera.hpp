@@ -22,7 +22,7 @@ inline double background_step(double vx) {
 
 // Role screen-edge rule: keep the sprite in [0, 192] and slide x0 when
 // walking past the right pin, unless the ending auto-walk is on.
-inline void pin_hero(double& x, double& xx, double& vx, double& x0, bool ending) {
+inline void pin_hero(int& x, double& xx, double& vx, double& x0, bool ending) {
     if (x < kLeftLimit) {
         x = kLeftLimit;
         xx = x;

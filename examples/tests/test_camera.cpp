@@ -30,7 +30,7 @@ int main() {
     CHECK(world_x(hero.x, hero.x0) > kRightLimit);
     CHECK(cam.x_bg <= 0.0);
 
-    double x = -4;
+    int x = -4;
     double xx = -4;
     double vx = -1;
     double x0 = 0;
