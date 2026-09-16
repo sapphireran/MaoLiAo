@@ -104,6 +104,6 @@ Ending: `> 3008` px. Max score about `7*10 + 7*5 = 105` if every enemy is remove
 
 ## Catalog vs source
 
-`examples/bin/export_catalog.py` is a check that the JSON matches the
-literals in `MaoLiAo/scene.cpp` and `MaoLiAo/role.cpp`. If you edit a map
-in C++, re-run the exporter or the suite will fail.
+`examples/tests/test_kit.py` checks the JSON against the literals in
+`MaoLiAo/scene.cpp` and `MaoLiAo/role.cpp`. If you edit a map in C++,
+update the catalog or the suite will fail.

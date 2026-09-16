@@ -44,7 +44,7 @@ Closed form, no collisions:
 | Apex rise | `REAL_HEIGHT * 101 / 3.5` | **101 px** |
 | Hang time (flat landing) | `2 * t_apex` | `0.9660917831` s ≈ 97 frames |
 
-`examples/bin/jump_table.py` and `examples/cpp/jump_table.cpp` print the per-frame
+`examples/tools/jump_table.py` and `examples/cpp/jump_table.cpp` print the per-frame
 arc. The discrete peak in the kit is **100.996 px on frame 48**, then the next
 step crosses zero velocity. The authored `UNREAL_HEIGHT` is `3 * 32 + 5 = 101`.
 

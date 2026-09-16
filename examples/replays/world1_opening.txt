@@ -1,0 +1,9 @@
+# Fall onto the opening grass, run PAST the first cloud (tiles 10–13 at
+# y=6, world-x 320–448 — a jump under it bonks the ceiling), then jump
+# the 96 px gap onto the raised shelf at tile 18.
+# The jump also clips the flower at (448, 160) on the way up.
+80 .
+205 D
+1  DW
+90 D
+15 .
