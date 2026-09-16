@@ -13,7 +13,8 @@ BINS = \
 	bin/05_camera_parallax \
 	bin/06_level_end \
 	bin/07_world3_pipes \
-	bin/08_score_rules
+	bin/08_score_rules \
+	bin/09_frame_sim
 
 .PHONY: all test clean
 
@@ -45,6 +46,9 @@ bin/07_world3_pipes: 07_world3_pipes/pipe_generator_example.cpp $(CORE) common/m
 
 bin/08_score_rules: 08_score_rules/score_example.cpp $(CORE) common/maoliao_core.h | bin
 	$(CXX) $(CXXFLAGS) $(INCLUDES) 08_score_rules/score_example.cpp $(CORE) -o $@
+
+bin/09_frame_sim: 09_frame_sim/frame_sim.cpp $(CORE) common/maoliao_core.h | bin
+	$(CXX) $(CXXFLAGS) $(INCLUDES) 09_frame_sim/frame_sim.cpp $(CORE) -o $@
 
 test: all
 	@set -e; \

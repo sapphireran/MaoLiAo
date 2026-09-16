@@ -19,6 +19,7 @@ make -C examples test
 | `06_level_end` | 94 / 104 / 94 tile thresholds and `x > 512` clear |
 | `07_world3_pipes` | seven pipe pairs + cloud runway, ASCII dump |
 | `08_score_rules` | +10 coin, +5 stomp / shot, score dies with `Role` |
+| `09_frame_sim` | 80-tick fall → walk → jump; pin at 192 and snap to row 8 |
 
 Shared code: [`common/maoliao_core.h`](common/maoliao_core.h) /
 [`common/maoliao_core.cpp`](common/maoliao_core.cpp).

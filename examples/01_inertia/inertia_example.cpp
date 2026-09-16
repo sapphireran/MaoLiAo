@@ -1,7 +1,5 @@
 // Standalone walkthrough of Inertia::move and the jump / walk scales.
-// Compile via `make -C examples` or:
-//   g++ -std=c++17 -I examples/common examples/common/maoliao_core.cpp \
-//       examples/01_inertia/inertia_example.cpp -o inertia_example
+// Compile via: make -C examples
 
 #include "maoliao_core.h"
 

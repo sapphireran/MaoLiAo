@@ -29,15 +29,20 @@ int main() {
     expect("grass right", floor.right == 15 * kWidth);
     expect("grass bottom", floor.bottom == 10 * kHeight);
 
-    // Cat at screen (64, 256) with x0 = 0 sits on y=8 tiles... wait:
-    // floor top is 288. A 32-px cat with y=256 has feet at 288.
+    // Role::action probes hitMap(x, y+1) for ground. A cat snapped to y=256
+    // (tile row 8) has feet at 287; the +1 probe puts bottom corners on 288,
+    // which is the top of the row-9 grass run.
     Vec2i hero[4];
-    heroWorldCorners(64, 256, 0, hero);
+    heroWorldCorners(64, 256 + 1, 0, hero);
     const Vec2i box[2] = {{floor.left, floor.top}, {floor.right, floor.bottom}};
-    expect("feet on grass", cornersHit(hero, box));
+    expect("ground probe on grass", cornersHit(hero, box));
 
-    // One pixel above: y=255, feet at 286, no corner inside [288, 320].
-    heroWorldCorners(64, 255, 0, hero);
+    // Same cat without the +1 probe: feet at 287, grass starts at 288.
+    heroWorldCorners(64, 256, 0, hero);
+    expect("body not inside grass", !cornersHit(hero, box));
+
+    // One more pixel up even with the probe: y=255+1, feet at 286.
+    heroWorldCorners(64, 255 + 1, 0, hero);
     expect("hover above grass", !cornersHit(hero, box));
 
     // Scenery grass id 11 is not solid.
