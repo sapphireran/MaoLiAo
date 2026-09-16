@@ -1,0 +1,15 @@
+{
+  "format": "fprintf_s / fscanf_s %d world index; path is cwd-relative gameRecord.dat",
+  "valid_range": [1, 3],
+  "missing_archive_rule": "flag <= 0 || flag >= 4",
+  "files": [
+    {"file": "world-1.dat", "class": "valid", "world": 1},
+    {"file": "world-2.dat", "class": "valid", "world": 2},
+    {"file": "world-3.dat", "class": "valid", "world": 3},
+    {"file": "invalid-zero.dat", "class": "missing-archive"},
+    {"file": "invalid-four.dat", "class": "missing-archive"},
+    {"file": "invalid-negative.dat", "class": "missing-archive"},
+    {"file": "empty.dat", "class": "undefined-parse"},
+    {"file": "garbage.dat", "class": "undefined-parse"}
+  ]
+}
