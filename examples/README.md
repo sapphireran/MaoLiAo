@@ -52,7 +52,7 @@ python3 examples/game_loop/simulate_run.py
 | --- | --- |
 | `Inertia::move`, jump launch, friction `k` / `u` | `putimage`, MCI aliases, fonts |
 | Corner-inset `isHit` | Sprite frame picking |
-| World 1–3 tables, `MAP_NUMBER` cap | Random CRT `rand()` (examples seed Python's RNG) |
+| World 1–3 tables, `MAP_NUMBER` cap, ASCII fixtures under `levels/fixtures/` | Unseeded CRT `rand()` (examples seed Python's RNG) |
 | `gameRecord.dat` integer | Pause / title mouse hit boxes |
 | One `TIME` step of run / jump / coins / stomps | Bullets (those advance in `Role::show`) |
 

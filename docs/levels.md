@@ -117,7 +117,8 @@ The hero locks at screen x = 192. World-x is `-x0 + x`. `isEnding` compares that
 
 ```bash
 python3 examples/levels/dump_layouts.py
+python3 examples/levels/dump_layouts.py --check-fixtures
 python3 examples/levels/test_worlds.py
 ```
 
-The tests assert tile counts, ending distances, enemy facings, coin values, and the `MAP_NUMBER` truncation documented here.
+Checked-in ASCII snapshots live in `examples/levels/fixtures/world{1,2,3}.txt`. The tests assert tile counts, ending distances, enemy facings, coin values, the `MAP_NUMBER` truncation documented here, and that those fixtures still match the dump.

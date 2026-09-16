@@ -1,0 +1,24 @@
+== world 1 ==
+authored tiles 32  loaded 30  MAP_NUMBER=30
+dropped:
+  x=71 y=10 id=13 1x1
+  x=75 y=10 id=13 1x1
+
+world 1  106 x 12 tiles (y grows downward, as in the EasyX framebuffer)
+
+00|                                                                                                          
+01|                                                                                                          
+02|                                                                                                          
+03|                                                                  oo>o                                    
+04|                                        ===                      =====                                    
+05|          ooooF                                                           o                               
+06|          ====     ,   ,                                      =           o      >          >             
+07|                  <      >      ,   nn       nn  ,   ,   ,                o     nno o o o nn ,       W    
+08|   >              ######### <    <  nn >     nn                   <       o     nn o o o onn              
+09|###############   :::::::::^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ****   ^   ############################
+10|:::::::::::::::~  :::::::::%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%~  ::::   %   ::::::::::::::::::::::::::::
+11|:::::::::::::::   :::::::::%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   ::::   %   ::::::::::::::::::::::::::::
+  +----------------------------------------------------------------------------------------------------------
+
+legend: #=grass top (1), ==cloud (2), :=dirt (3), %=snow underground (4), ^=snow top (5), *=high-friction (6), n=pipe mouth (10), ,=grass tuft (11), W=victory sign (12), ~=water (13), o=coin, F=weapon / star, >=enemy facing right, <=enemy facing left
+

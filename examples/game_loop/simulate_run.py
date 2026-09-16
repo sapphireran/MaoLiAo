@@ -29,11 +29,11 @@ def parse_script(text: str) -> list[int]:
 
 
 DEFAULT_SCRIPT = """
-80            # fall onto the grass
-12 right up   # hop toward the first cloud
-40 right
-8 right up
-50 right
+80            # fall onto the grass at (64, 256)
+1 up          # jump in place — the first patrol sits at tile (3, 8)
+48            # wait through the apex so vY is downward
+30 right      # fall right and stomp that patrol
+40 right      # keep running along the starting grass
 """
 
 

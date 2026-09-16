@@ -79,10 +79,11 @@ A hit awards +10, plays `music_coin`, records a sparkle through `Scene::setScore
 
 ## Food (weapon / star)
 
-Food boxes are pixel-based and slightly larger than a tile:
+Food boxes are pixel-based and slightly larger than a tile. The C++ uses
+integer macros, so the size is `(52, 25)` not `(52, 25.6)`:
 
 ```
-(food.x, food.y) … + (3 * 32 / 2 + 4, 4 * 32 / 5)
+(food.x, food.y) … + (3 * WIDTH / 2 + 4, 4 * HEIGHT / 5)
                  … + (52, 25)
 ```
 

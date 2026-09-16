@@ -80,7 +80,7 @@ def test_coin_and_food_and_enemy() -> None:
     fx, fy = foods[0]
     box = food_box(fx, fy)
     assert box[1][0] - box[0][0] == 52
-    assert box[1][1] - box[0][1] == 25.6 or abs(box[1][1] - box[0][1] - 25.6) < 1e-9
+    assert box[1][1] - box[0][1] == 25
 
     enemies = [(3 * WIDTH, 8 * HEIGHT, 1), (0, 0, 0)]
     assert hit_enemy(3 * WIDTH + 4, 8 * HEIGHT + 4, enemies) == 0

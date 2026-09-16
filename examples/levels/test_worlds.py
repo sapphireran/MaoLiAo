@@ -6,7 +6,9 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parents[0]))
+sys.path.insert(0, str(HERE))
 
 from maoliao_lib.constants import MAP_NUMBER, WIDTH  # noqa: E402
 from maoliao_lib.worlds import (  # noqa: E402
@@ -85,6 +87,15 @@ def test_world2_food_is_nudged_off_the_cloud() -> None:
     assert abs(fy - (3 * 32 + 32 / 5)) < 1e-9
 
 
+def test_ascii_fixtures() -> None:
+    from dump_layouts import FIXTURE_DIR, report
+
+    for world in (1, 2, 3):
+        path = FIXTURE_DIR / f"world{world}.txt"
+        assert path.is_file(), path
+        assert report(world, 1) == path.read_text(encoding="utf-8")
+
+
 def test_seeded_world3_is_stable() -> None:
     a = world3_pipe_field(seed=1)
     b = world3_pipe_field(seed=1)
@@ -104,6 +115,7 @@ def main() -> int:
         test_friction_on_world1_strip,
         test_enemy_pixels,
         test_world2_food_is_nudged_off_the_cloud,
+        test_ascii_fixtures,
         test_seeded_world3_is_stable,
     ]
     for fn in testers:

@@ -19,31 +19,60 @@ from maoliao_lib.worlds import (  # noqa: E402
 )
 
 
-def summarize(world: int, seed: int) -> None:
+FIXTURE_DIR = Path(__file__).resolve().parent / "fixtures"
+
+
+def report(world: int, seed: int) -> str:
     authored = authored_map(world, seed)
     loaded = loaded_map(world, seed)
     dropped = dropped_map(world, seed)
-    print(f"== world {world} ==")
-    print(f"authored tiles {len(authored)}  loaded {len(loaded)}  "
-          f"MAP_NUMBER={MAP_NUMBER}")
+    lines = [
+        f"== world {world} ==",
+        f"authored tiles {len(authored)}  loaded {len(loaded)}  "
+        f"MAP_NUMBER={MAP_NUMBER}",
+    ]
     if dropped:
-        print("dropped:")
+        lines.append("dropped:")
         for tile in dropped:
-            print(f"  x={tile.x} y={tile.y} id={tile.id} "
-                  f"{tile.x_amount}x{tile.y_amount}")
+            lines.append(
+                f"  x={tile.x} y={tile.y} id={tile.id} "
+                f"{tile.x_amount}x{tile.y_amount}"
+            )
     else:
-        print("dropped: none")
-    print()
-    print(format_ascii(render_ascii(world, seed=seed, use_loaded=True)))
-    print()
+        lines.append("dropped: none")
+    lines.append("")
+    lines.append(format_ascii(render_ascii(world, seed=seed, use_loaded=True)))
+    lines.append("")
+    return "\n".join(lines) + "\n"
+
+
+def summarize(world: int, seed: int) -> None:
+    sys.stdout.write(report(world, seed))
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--world", type=int, choices=(1, 2, 3), default=0)
     parser.add_argument("--seed", type=int, default=1)
+    parser.add_argument(
+        "--check-fixtures",
+        action="store_true",
+        help="compare the dump to examples/levels/fixtures/worldN.txt",
+    )
     args = parser.parse_args()
     worlds = (args.world,) if args.world else (1, 2, 3)
+    if args.check_fixtures:
+        failed = 0
+        for world in worlds:
+            got = report(world, args.seed)
+            path = FIXTURE_DIR / f"world{world}.txt"
+            expected = path.read_text(encoding="utf-8")
+            if got != expected:
+                print(f"fixture mismatch {path}", file=sys.stderr)
+                failed += 1
+            else:
+                print(f"ok  fixture world {world}")
+        return 1 if failed else 0
     for world in worlds:
         summarize(world, args.seed)
     return 0

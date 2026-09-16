@@ -71,7 +71,8 @@ def coin_box(tile_x: int, tile_y: int) -> Box:
 
 
 def food_box(px: float, py: float) -> Box:
-    return ((px, py), (px + 3 * WIDTH / 2 + 4, py + 4 * HEIGHT / 5))
+    # C++ uses integer macros: 3*WIDTH/2+4 == 52, 4*HEIGHT/5 == 25.
+    return ((px, py), (px + 3 * WIDTH // 2 + 4, py + 4 * HEIGHT // 5))
 
 
 def enemy_box(px: float, py: float) -> Box:

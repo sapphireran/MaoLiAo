@@ -6,11 +6,14 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parents[0]))
+sys.path.insert(0, str(HERE))
 
 from maoliao_lib.commands import pack  # noqa: E402
 from maoliao_lib.constants import LIFE, SCORE_COIN, XRIGHT  # noqa: E402
 from maoliao_lib.hero import GameState, tick  # noqa: E402
+from simulate_run import DEFAULT_SCRIPT, parse_script  # noqa: E402
 
 
 def _settle(state: GameState, frames: int = 80) -> GameState:
@@ -88,6 +91,18 @@ def test_lives_start_at_five() -> None:
     assert state.world == 2
 
 
+def test_default_script_stomps_first_patrol() -> None:
+    state = GameState.fresh(1)
+    for key in parse_script(DEFAULT_SCRIPT):
+        tick(state, key)
+        if state.hero.died:
+            break
+    assert not state.hero.died
+    assert state.hero.score == 5
+    assert state.enemies[0][2] == 0
+    assert state.hero.x > 64
+
+
 def main() -> int:
     testers = [
         test_spawn_falls_onto_world1_grass,
@@ -96,6 +111,7 @@ def main() -> int:
         test_touching_an_enemy_while_grounded_kills,
         test_stomp_awards_five,
         test_lives_start_at_five,
+        test_default_script_stomps_first_patrol,
     ]
     for fn in testers:
         fn()
