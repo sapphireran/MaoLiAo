@@ -338,3 +338,10 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# Portable example binaries (built on Linux; not the EasyX .exe)
+examples/physics/physics_sandbox
+examples/physics/test_physics
+examples/snippets/hit_test_example
+__pycache__/
+*.pyc
