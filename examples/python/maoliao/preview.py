@@ -67,7 +67,8 @@ def render(world: int, seed: int | None = 1, ruler_every: int = 10) -> str:
         )
     header = []
     for i in range(cols):
-        header.append(str(i % 10) if i % ruler_every == 0 else " ")
+        # Tens digit at columns 0, 10, 20, … so the strip is readable.
+        header.append(str((i // ruler_every) % 10) if i % ruler_every == 0 else " ")
     lines.append("    " + "".join(header))
     for y, row in enumerate(grid):
         lines.append(f"{y:02d}  " + "".join(row))

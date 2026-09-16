@@ -33,7 +33,7 @@ Layout:
 | `python/cli.py` | command line |
 | `python/tests/` | `unittest` |
 
-World 3 pipes are generated with Python `Random(seed).randrange(a, b)`, which matches the **range** of `rand()%(b-a)+a` but not the MSVC CRT sequence. Use `--seed` to freeze a layout for screenshots and tests.
+World 3 pipes are generated with Python `Random(seed)`. Coin heights are drawn first, then pipe heights, matching `Scene::Scene` (`createCoin` before `createMap`). That matches the **range** of `rand()%(b-a)+a` but not the MSVC CRT sequence. Use `--seed` to freeze a layout for screenshots and tests.
 
 ## C++
 
@@ -49,8 +49,11 @@ make -C examples/cpp
 ## Tests
 
 ```bash
+make -C examples test
+# or separately:
 python3 -m unittest discover -s examples/python/tests -v
 make -C examples/cpp test
+make -C examples snapshots   # refresh output/*.txt after data edits
 ```
 
 If you edit `MaoLiAo/define.h` or a `createMap` table, update `examples/data/` and re-run both suites.

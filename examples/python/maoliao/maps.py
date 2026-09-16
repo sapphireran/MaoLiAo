@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import random
-from pathlib import Path
 from typing import Any
 
 from .constants import DATA_DIR, HEIGHT, MAP_NUMBER, WIDTH, friction_u
@@ -69,9 +68,8 @@ def apply_map_cap(records: list[dict], cap: int = MAP_NUMBER) -> list[dict]:
     return loaded
 
 
-def generate_world3_maps(seed: int | None = 1) -> list[dict]:
+def _maps_from_rng(rng: random.Random) -> list[dict]:
     """Emit the 7 pipe columns + runway + goal from scene.cpp world == 3."""
-    rng = random.Random(seed)
     heights = [c_random(rng, 1, 7) for _ in range(10)]
     xs = [i * 10 + 10 for i in range(10)]
     records: list[dict] = []
@@ -91,19 +89,32 @@ def generate_world3_maps(seed: int | None = 1) -> list[dict]:
     return records
 
 
-def generate_world3_coins(seed: int | None = 1) -> list[list[int]]:
-    rng = random.Random(seed)
-    # Independent of map heights in the C++: createCoin uses its own loop.
+def _coins_from_rng(rng: random.Random) -> list[list[int]]:
     heights = [c_random(rng, 3, 7) for _ in range(10)]
     xs = [5, 15, 25, 35, 45, 55, 65]
     return [[xs[i], heights[i]] for i in range(7)]
 
 
+def generate_world3_maps(seed: int | None = 1) -> list[dict]:
+    return _maps_from_rng(random.Random(seed))
+
+
+def generate_world3_coins(seed: int | None = 1) -> list[list[int]]:
+    return _coins_from_rng(random.Random(seed))
+
+
+def generate_world3(seed: int | None = 1) -> tuple[list[dict], list[list[int]]]:
+    """Match Scene::Scene order: createCoin() consumes rand, then createMap()."""
+    rng = random.Random(seed)
+    coins = _coins_from_rng(rng)
+    maps = _maps_from_rng(rng)
+    return maps, coins
+
+
 def world_payload(world: int, seed: int | None = 1) -> dict[str, Any]:
     data = load_worlds()["worlds"][str(world)]
     if world == 3:
-        maps = generate_world3_maps(seed)
-        coins = generate_world3_coins(seed)
+        maps, coins = generate_world3(seed)
     else:
         maps = list(data["maps"])
         coins = [list(pair) for pair in data["coins"]]

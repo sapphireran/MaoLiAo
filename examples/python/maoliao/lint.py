@@ -8,6 +8,7 @@ from .constants import (
     COINS_NUMBER,
     ENEMY_TOTE,
     FOOD_NUMBER,
+    HEIGHT,
     MAP_NUMBER,
     WIDTH,
 )

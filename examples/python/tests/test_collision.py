@@ -5,7 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from maoliao.collision import Rect, collides_with_map, hero_corners, is_hit, tile_rect
-from maoliao.constants import WIDTH
+from maoliao.constants import HEIGHT, WIDTH
 from maoliao.maps import world_payload
 
 

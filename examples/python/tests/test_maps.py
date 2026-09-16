@@ -8,6 +8,7 @@ from maoliao.constants import MAP_NUMBER
 from maoliao.maps import (
     apply_map_cap,
     colliding_extent_tiles,
+    generate_world3,
     generate_world3_maps,
     load_worlds,
     world_payload,
@@ -67,6 +68,14 @@ class World3Tests(unittest.TestCase):
         payload = world_payload(3, seed=1)
         self.assertEqual(len(payload["maps_loaded"]), 30)
         self.assertEqual(payload["maps_truncated"], [])
+
+    def test_ctor_consumes_coin_rng_before_pipes(self):
+        maps, coins = generate_world3(seed=1)
+        independent_coins = world_payload(3, seed=1)["coins"]
+        self.assertEqual(coins, independent_coins)
+        # Maps must differ from a maps-only generator that starts at the same seed,
+        # because createCoin() already drew 10 random() values.
+        self.assertNotEqual(maps, generate_world3_maps(seed=1))
 
 
 class PreviewTests(unittest.TestCase):
