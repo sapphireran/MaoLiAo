@@ -1,0 +1,9 @@
+# Keyboard script for examples/game_loop/simulate_run.py
+# Each line: <frames> [command names...]
+80
+12 right up
+40 right
+8 right up
+30 right
+10 right up
+40 right
