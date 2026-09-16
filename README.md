@@ -58,7 +58,7 @@ make
 make test
 ```
 
-That builds eight small programs:
+That builds ten small programs:
 
 1. **inertia jump** — kinematic jump arc (`v = -√(2gH)`, `x = vt + ½at²`)
 2. **friction run** — grass / ice / slick surface μ and stop distance
@@ -68,6 +68,8 @@ That builds eight small programs:
 6. **save roundtrip** — `gameRecord.dat` world-number format
 7. **camera scroll** — how `x0` and parallax `xBg` move
 8. **enemy patrol** — walk, turn at walls, turn at ledges
+9. **bullet flight** — `MAX_DISTANCE` and tile hits
+10. **score events** — coin / stomp / bullet points
 
 See [examples/README.md](examples/README.md) and the notes under [docs/](docs/).
 

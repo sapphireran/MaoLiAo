@@ -11,5 +11,6 @@ File paths point at `MaoLiAo/*.h` and `MaoLiAo/*.cpp`.
 | [controls-and-ui.md](controls-and-ui.md) | Keys, title, pause, HUD, saves |
 | [resources.md](resources.md) | BMP sheets, MP3 aliases, window size |
 | [known-issues.md](known-issues.md) | Off-by-one copies, macros, typos |
+| [study-guide.md](study-guide.md) | Pair each source file with an example |
 
 Portable programs that exercise the same numbers live in `../examples/`.

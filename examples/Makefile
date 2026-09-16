@@ -26,7 +26,9 @@ PROGS = \
 	$(BUILD)/05_command_mask \
 	$(BUILD)/06_save_roundtrip \
 	$(BUILD)/07_camera_scroll \
-	$(BUILD)/08_enemy_patrol
+	$(BUILD)/08_enemy_patrol \
+	$(BUILD)/09_bullet_flight \
+	$(BUILD)/10_score_events
 
 .PHONY: all test clean dirs
 
@@ -60,6 +62,12 @@ $(BUILD)/07_camera_scroll: 07_camera_scroll/main.cpp $(COMMON_OBJ)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $^ -o $@
 
 $(BUILD)/08_enemy_patrol: 08_enemy_patrol/main.cpp $(COMMON_OBJ)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) $^ -o $@
+
+$(BUILD)/09_bullet_flight: 09_bullet_flight/main.cpp $(COMMON_OBJ)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) $^ -o $@
+
+$(BUILD)/10_score_events: 10_score_events/main.cpp $(COMMON_OBJ)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $^ -o $@
 
 test: all

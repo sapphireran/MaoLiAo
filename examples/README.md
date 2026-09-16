@@ -14,6 +14,8 @@ examples/
   06_save_roundtrip/ gameRecord.dat
   07_camera_scroll/ XRIGHT window + 1/5 sky parallax
   08_enemy_patrol/ ledge / wall turns
+  09_bullet_flight/ MAX_DISTANCE and tile hits
+  10_score_events/  +10 / +5 / +5 replay
   testdata/        checked-in reference dumps
 ```
 
@@ -37,6 +39,7 @@ They are meant to be read next to the matching page in `docs/`.
 | 03, 08 | [docs/architecture.md](../docs/architecture.md) |
 | 04 | [docs/map-format.md](../docs/map-format.md) |
 | 05, 06 | [docs/controls-and-ui.md](../docs/controls-and-ui.md) |
+| 09, 10 | [docs/study-guide.md](../docs/study-guide.md) |
 
 ## What is copied vs invented
 
