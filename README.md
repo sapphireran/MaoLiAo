@@ -51,6 +51,7 @@ examples/                   Portable C++ ports of the game math
 | [docs/resources.md](docs/resources.md) | Expected `res/` art and audio |
 | [docs/known-issues.md](docs/known-issues.md) | Guard macros, off-by-one loops |
 | [docs/windows-build.md](docs/windows-build.md) | VS 2019 + EasyX setup |
+| [docs/examples.md](docs/examples.md) | Portable suite index (`make test`) |
 
 ## Portable examples
 
