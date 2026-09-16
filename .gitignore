@@ -338,3 +338,10 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# Portable example build outputs
+examples/bin/
+examples/*.o
+examples/src/*.o
+examples/*.exe
+/tmp/maoliao-save-test.dat
