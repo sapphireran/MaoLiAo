@@ -1,0 +1,22 @@
+== world 3 ==
+authored tiles 30  loaded 30  MAP_NUMBER=30
+dropped: none
+
+world 3  105 x 12 tiles (y grows downward, as in the EasyX framebuffer)
+
+00|F         vv        |         vv        |         vv        |         |                                  
+01|          vv        |                   vv                  |         |                                  
+02|                    |                   vv                  vv        vv                                 
+03|               o    vv             o <                      vv        vv                                 
+04|     o              vv  <                                                                            W   
+05|                         o    nn           <      nn                                  >                  
+06|          nn                  nn  >          o    nn   o         o              =========================
+07|          nn                  |         nn        |            >                                         
+08|          |                   |         nn        |         nn     <  nn                                 
+09|          |         nn        |         |         |         nn        nn                                 
+10|          |         nn        |         |         |         |         |                                  
+11|          |         |         |         |         |         |         |                                  
+  +---------------------------------------------------------------------------------------------------------
+
+legend: ==cloud (2), |=pipe shaft (7), v=inverted pipe (8), n=pipe mouth (10), W=victory sign (12), o=coin, F=weapon / star, >=enemy facing right, <=enemy facing left
+

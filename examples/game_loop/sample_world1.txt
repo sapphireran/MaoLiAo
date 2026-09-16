@@ -1,0 +1,9 @@
+# Keyboard script for examples/game_loop/simulate_run.py
+# Each line: <frames> [command names...]
+# World 1 spawns next to the first patrol. Jump first, then drift right
+# only after the apex so the contact is a stomp (vY > 0), not a death.
+80
+1 up
+48
+30 right
+40 right
