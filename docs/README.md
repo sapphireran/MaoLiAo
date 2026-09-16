@@ -12,5 +12,6 @@ These notes are a personal study archive of the 2020 猫里奥 homework tree. Th
 | [assets.md](assets.md) | `res/` BMP measurements and which row each blit uses |
 | [quirks.md](quirks.md) | Guard typo, off-by-one loops, spawn `y = X0`, world-2 flag clip |
 | [build-windows.md](build-windows.md) | EasyX + Visual Studio |
+| [verified-numbers.md](verified-numbers.md) | `make test` printout from this agent |
 
 Portable replays of the same numbers live in [`../examples/`](../examples/README.md).

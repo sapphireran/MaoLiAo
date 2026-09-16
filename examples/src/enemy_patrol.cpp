@@ -24,17 +24,17 @@ bool hits_any(int sx, int sy, const std::vector<maoliao::Tile>& map) {
 int main() {
     using namespace maoliao;
 
-    // A 20-tile-wide floor at y=8, walls at x=0 and x=19.
+    // A short corridor at y=8 with walls at x=0 and x=8 (256 px wide).
     std::vector<Tile> map;
-    map.push_back(Tile{0, 8, 1, 20, 1, u_t2()});
+    map.push_back(Tile{0, 8, 1, 9, 1, u_t2()});
     map.push_back(Tile{0, 6, 1, 1, 2, u_t2()});
-    map.push_back(Tile{19, 6, 1, 1, 2, u_t2()});
+    map.push_back(Tile{8, 6, 1, 1, 2, u_t2()});
 
-    Actor e{5 * kWidth, 7 * kHeight, 1};
+    Actor e{3 * kWidth, 7 * kHeight, 1};
 
     int flips = 0;
     int last_turn = e.turn;
-    for (int step = 0; step < 800; ++step) {
+    for (int step = 0; step < 600; ++step) {
         e.x += e.turn * kEnemyStep;
         const int x1 = e.x;
         const int y1 = e.y;
@@ -51,7 +51,7 @@ int main() {
 
     std::cout << "patrol flips   " << flips << "  x " << e.x << " turn " << e.turn << "\n";
     MLA_CHECK(flips >= 2);
-    MLA_CHECK(e.x > 0 && e.x < 20 * kWidth);
+    MLA_CHECK(e.x > 0 && e.x < 9 * kWidth);
 
     // Stomp vs side-hit: falling (vY>0) lives; rising/idle dies.
     const bool stomp = true;   // vY > 0

@@ -62,7 +62,7 @@ myHero.yy = myHero.yy - (-Inertia::move(myHero.vY, TIME, G) * UNREAL_HEIGHT / RE
 
 which is just `yy += move(...) * scale`. After landing, `y` is snapped to the tile grid through the sprite center: `(y + HEIGHT/2) / HEIGHT * HEIGHT`.
 
-Continuous (not discrete) kinematics would peak at exactly **3.5 m / 101 px**. The Euler-like step undershoots by a few millimetres; the lab prints `3.4999` m and `100.997` px.
+Continuous (not discrete) kinematics would peak at exactly **3.5 m / 101 px**. The 10 ms step undershoots; `examples/src/jump_lab.cpp` prints **3.499861 m / 100.995984 px in 49 frames**.
 
 Falling off the bottom (`y > YSIZE`) sets `died` and plays `music_died`.
 
@@ -135,10 +135,9 @@ When `xBg <= -sky_width` it wraps to 0; a second blit at `width + xBg` fills the
 
 | t (s) | vY after step (m/s) | yy (px), start 64 |
 |---|---|---|
-| 0.00 | -14.4914 | 64.000 |
-| 0.01 | -14.1914 | 59.861 |
-| 0.24 | -7.2914 | ~-36.8  (near apex) |
-| 0.49 | +0.2086 | ~-36.9 then falling |
+| 0.00 | -14.491377 | 64.000 |
+| 0.01 | -14.191377 | 59.861 |
+| 0.49 | crosses 0 | discrete apex 3.499861 m |
 | … | → +∞ | falls until a tile or `y > 384` |
 
 The lab’s `jump_lab` integrates until `vY` crosses 0 and reports the discrete apex.

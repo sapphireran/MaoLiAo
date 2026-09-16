@@ -61,7 +61,7 @@ The EasyX game does not build on this Linux agent. The lab under `examples/` rep
 cd examples && make test
 ```
 
-That builds twelve small programs from `examples/include/maoliao/` and exits 0 only when every self-check prints `ok`. See [examples/README.md](examples/README.md).
+That builds twelve small programs from `examples/include/maoliao/` and exits 0 only when every self-check prints `ok`. Numbers from a green run are in [docs/verified-numbers.md](docs/verified-numbers.md). See [examples/README.md](examples/README.md).
 
 ## What this PR does not do
 
